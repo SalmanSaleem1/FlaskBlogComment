@@ -1,0 +1,42 @@
+DEBUG: root: <function new_post at 0x7fdb8666bb70>
+INFO: werkzeug:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO: werkzeug:  * Restarting with stat
+DEBUG: root: <function new_post at 0x7f16fe2aeb70>
+WARNING: werkzeug:  * Debugger is active!
+INFO: werkzeug:  * Debugger PIN: 864-669-092
+DEBUG: root: <function new_post at 0x7f59be3c0b70>
+INFO: werkzeug:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO: werkzeug:  * Restarting with stat
+DEBUG: root: <function new_post at 0x7fa2bce90b70>
+WARNING: werkzeug:  * Debugger is active!
+INFO: werkzeug:  * Debugger PIN: 864-669-092
+DEBUG: root: <function new_post at 0x7f3af6283b70>
+INFO: werkzeug:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO: werkzeug:  * Restarting with stat
+DEBUG: root: <function new_post at 0x7f71a9c68b70>
+WARNING: werkzeug:  * Debugger is active!
+INFO: werkzeug:  * Debugger PIN: 864-669-092
+DEBUG: root: <function new_post at 0x7fdf6a3c9b70>
+INFO: werkzeug:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO: werkzeug:  * Restarting with stat
+DEBUG: root: <function new_post at 0x7f4e23b06b70>
+WARNING: werkzeug:  * Debugger is active!
+INFO: werkzeug:  * Debugger PIN: 864-669-092
+DEBUG: root: <function new_post at 0x7f300681fb70>
+INFO: werkzeug:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO: werkzeug:  * Restarting with stat
+DEBUG: root: <function new_post at 0x7f69caff7b70>
+WARNING: werkzeug:  * Debugger is active!
+INFO: werkzeug:  * Debugger PIN: 864-669-092
+DEBUG: root: <function new_post at 0x7f62edc6eb70>
+INFO: werkzeug:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO: werkzeug:  * Restarting with stat
+DEBUG: root: <function new_post at 0x7ff722649b70>
+WARNING: werkzeug:  * Debugger is active!
+INFO: werkzeug:  * Debugger PIN: 864-669-092
+INFO: werkzeug:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO: werkzeug:  * Restarting with stat
+WARNING: werkzeug:  * Debugger is active!
+INFO: werkzeug:  * Debugger PIN: 864-669-092
+INFO: werkzeug:  * Detected change in '/home/salman/PythonWork/LoginTask/flaskface/post/Routes.py', reloading
+INFO: werkzeug:  * Restarting with stat

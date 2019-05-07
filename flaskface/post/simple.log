@@ -1,0 +1,4 @@
+INFO: root: New Post Data<function new_post at 0x7f12f899a8c8>
+INFO: root: Detail Post Data<function post_detail at 0x7f12f899aa60>
+INFO: root: Delete Post Data<function post_delete at 0x7f12f8877840>
+INFO: root: Update Post Data<function post_update at 0x7f12f899ad90>

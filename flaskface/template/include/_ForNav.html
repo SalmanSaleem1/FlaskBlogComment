@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Flask</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('main.home')}}">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            {% if current_user.is_authenticated %}
+            <a><i class="far fa-bell mr-sm-3" style="font-size: xx-large"></i></a>
+            <a class="btn btn-primary mr-sm-2" href="{{ url_for('post.new_post')}}">New Post</a>
+            <a class="btn btn-primary mr-sm-2" href="{{ url_for('user.account')}}">{{ current_user.name }}</a>
+            <a class="btn btn-primary mr-sm-2" href="{{ url_for('user.logout')}}">Logout</a>
+            {% else %}
+            <a class="btn btn-primary mr-sm-2" href="{{ url_for('user.registers')}}">Register</a>
+            {% endif %}
+        </form>
+    </div>
+</nav>
+
+
+
+
+<style>
+    body {
+        font-family: "Lato", sans-serif;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 160px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+    }
+
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+
+    .main {
+        margin-left: 160px; /* Same as the width of the sidenav */
+        font-size: 28px; /* Increased text to enable scrolling */
+        padding: 0px 10px;
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+    }
+</style>

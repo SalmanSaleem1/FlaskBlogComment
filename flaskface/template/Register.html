@@ -1,0 +1,90 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+<center>
+    <div class="content-section" style="width: 600px">
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <fieldset>
+            <legend>Register User</legend>
+            <div class="form-group" style="width: 500px;">
+                {% if form.name.errors %}
+                    {{ form.name(class="form-control from-control-lg is-invalid", placeholder="Name")}}
+                        {% for error in form.name.errors %}
+                            <div class="alert-message block-message error">
+                                <span class="badge badge-danger">
+                                    {{ error }}
+                                </span>
+                            </div>
+                        {% endfor %}
+                {% else %}
+                    {{ form.name(class="form-control from-control-lg", placeholder="Name")}}
+                {% endif %}
+            </div>
+            <div class="form-group" style="width: 500px;">
+                {% if form.username.errors %}
+                    {{ form.username(class="form-control from-control-lg is-invalid", placeholder="User Name")}}
+                    {% for error in form.username.errors%}
+                        <div class="alert-message block-message error">
+                            <span class="badge badge-danger">
+                                {{ error }}
+                            </span>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                {{ form.username(class="form-control from-control-lg", placeholder="User Name")}}
+                {% endif %}
+            </div>
+            <div class="form-group" style="width: 500px;">
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control from-control-lg is-invalid", placeholder="Email")}}
+                    {% for error in form.email.errors%}
+                        <div class="alert-message block-message error">
+                            <span class="badge badge-danger">
+                                {{ error }}
+                            </span>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                {{ form.email(class="form-control from-control-lg", placeholder="Email")}}
+                {% endif %}
+            </div>
+            <div class="form-group" style="width: 500px;">
+                {% if form.password.errors %}
+                    {{ form.password(class="form-control from-control-lg is-invalid", placeholder="Password")}}
+                    {% for error in form.password.errors%}
+                        <div class="alert-message block-message error">
+                            <span class="badge badge-danger">
+                                {{ error }}
+                            </span>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {{ form.password(class="form-control from-control-lg", placeholder="Password")}}
+                {% endif %}
+            </div>
+            <div class="form-group" style="width: 500px;">
+                {% if form.confirm_password.errors %}
+                    {{ form.confirm_password(class="form-control from-control-lg is-invalid", placeholder="Confirm Password")}}
+                    {% for error in form.confirm_password.errors %}
+                        <div class="alert-message block-message error">
+                            <span class="badge badge-danger">
+                                {{ error }}
+                            </span>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {{ form.confirm_password(class="form-control from-control-lg", placeholder="Confirm Password")}}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group" style="font-size: 15px">
+                {{ form.submit(class="btn btn-outline-info") }}
+                <a href="{{ url_for('user.login')}}">Login</a>
+        </div>
+    </form>
+</div>
+</center>
+
+
+{% endblock content %}
