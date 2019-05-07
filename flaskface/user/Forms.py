@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, ValidationError
-from flask_wtf.file import FileAllowed,FileField, FileRequired
+from flask_wtf.file import FileAllowed, FileField, FileRequired
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 from flaskface.Models import User
 from flaskface.constant.app_constant import Constants
@@ -58,4 +58,3 @@ class RequestPasswordForm(FlaskForm):
     password = StringField('Password', validators=[DataRequired(), Length(min=2, max=25), Email()])
     confirm_password = StringField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Request Reset Password')
-

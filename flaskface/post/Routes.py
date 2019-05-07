@@ -5,6 +5,7 @@ from flaskface import db, pusher_client
 from flask_login import current_user, login_required
 from marshmallow import pprint
 from flaskface.constant.app_constant import Constants
+from flaskface.post.utils import save_picture
 
 post = Blueprint('post', __name__)
 
@@ -14,7 +15,10 @@ post = Blueprint('post', __name__)
 def new_post():
     form = NewPostForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        if form.image_file.data:
+            picture_file = save_picture(form.image_file.data)
+
+        post = Post(title=form.title.data, content=form.content.data, image_file=picture_file, author=current_user)
         db.session.add(post)
         db.session.commit()
         sechma = PostSchema()
@@ -22,6 +26,7 @@ def new_post():
         pprint(result.data)
         flash(f'{Constants.POST_SUCCESS}', 'success')
         return redirect(url_for('main.home'))
+
     return render_template('NewPost.html', title='New Post', form=form, legend='New Post')
 
 

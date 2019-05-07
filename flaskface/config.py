@@ -3,7 +3,7 @@
 class BaseConfig(object):
     DEBUG = False
     SECRET_KEY = '123456789987456321'
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///database.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///blog.db'
 
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587

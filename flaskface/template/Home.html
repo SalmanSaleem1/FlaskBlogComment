@@ -17,7 +17,8 @@
                 post.title}}</a>
             </h2>
             <p class="article-content">{{ post.content }}</p>
-
+            <img class="rounded float-left" style="width: 300px; height: 200px"
+             src="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
         </div>
 
     </article>

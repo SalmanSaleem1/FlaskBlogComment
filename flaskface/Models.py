@@ -51,18 +51,19 @@ class User(db.Model, UserMixin):
         return self.id
 
     def __repr__(self):
-        return "User('{self.username}','{self.email}','{self.image_file}','{self.password}')".format(self.username)
+        return f"User('{self.username}','{self.name}','{self.image_file}','{self.password}')"
 
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     content = db.Column(db.String(255), nullable=False)
+    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     create_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.create_at}', '{self.user_id}')"
+        return f"Post('{self.title}', '{self.create_at}', '{self.user_id}', '{self.image_file}')"
 
 
 class Comment(db.Model):

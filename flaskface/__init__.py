@@ -8,7 +8,7 @@ from flask_mail import Mail
 from pusher import Pusher
 
 app = Flask(__name__, template_folder='template')
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 pusher_client = Pusher(
     app_id='771243',
     key='ca7c12f18787cfa7312a',
