@@ -2,9 +2,11 @@
 {% block content %}
     <div class="container">
         {% for post in posts.items %}
-            <article class="media content-section">
-                <img class="rounded-circle account-img"
-                     src="{{ url_for('static', filename='profile_pic/' + post.author.image_file) }}">
+            <article class="media jumbotron hoverable p-4 mx-3 mb-5">
+                <a href="{{ url_for('static', filename='profile_pic/' + post.author.image_file) }}" target="_blank">
+                    <img class="rounded-circle account-img"
+                         src="{{ url_for('static', filename='profile_pic/' + post.author.image_file) }}">
+                </a>
                 <div class="media-body">
                     <div class="article-metadata">
                         <a class="mr-2"
@@ -15,6 +17,10 @@
                            href="{{ url_for('post.post_detail', post_id=post.id) }}">{{ post.title }}</a>
                     </h2>
                     <p class="article-content">{{ post.content }}</p>
+{#                    <a target="_blank" href="{{ url_for('static', filename='post_pic/' + post.image_file) }}">#}
+{#                        <img class="rounded float-left" style="width: 300px; height: 200px"#}
+{#                             src="{{ url_for('https://ucarecdn.com/' + post.image_file) }}">#}
+{#                    </a>#}
                     <a target="_blank" href="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
                         <img class="rounded float-left" style="width: 300px; height: 200px"
                              src="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
@@ -22,9 +28,7 @@
                 </div>
             </article>
         {% endfor %}
-
-
-
+        {#    Pagination Start from here #}
         {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
             {% if page_num %}
                 {% if posts.page == page_num %}

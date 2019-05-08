@@ -1,72 +1,75 @@
-{% extends 'Layout.html'%}
+{% extends 'Layout.html' %}
 
 {% block content %}
-<div class="container">
-    <div class="content-section">
-        <form action="" method="post" enctype="multipart/form-data">
-            <fieldset>
-                {{ form.hidden_tag() }}
-                <legend>Account info</legend>
-                <div class="media">
-                    <img class="rounded-circle account-img" src="{{ image_file }}">
-                    <div class="media-body">
-                        <h2 class="account-heading">{{ current_user.username }}</h2>
-                        <h5 class="text-muted">{{ current_user.email }}</h5>
+    <div class="container">
+        <div class="content-section">
+            <form action="" method="post" enctype="multipart/form-data">
+                <fieldset>
+                    {{ form.hidden_tag() }}
+                    <legend>Account info</legend>
+                    <div class="media">
+                        <a href="{{ image_file }}" target="_blank">
+                            <img class="rounded-circle account-img" src="{{ image_file }}">
+                        </a>
+                        <div class="media-body">
+                            <h2 class="account-heading">{{ current_user.username }}</h2>
+                            <h5 class="text-muted">{{ current_user.email }}</h5>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group" style="width: 500px">
-                    {% if form.name.errors %}
-                    {{ form.name(class="form-control form-control-lg is-invalid", placeholder="Name")}}
-                    {% for error in form.name.errors %}
-                    <div class="alert-message block-message error">
+                    <div class="form-group" style="width: 500px">
+                        {% if form.name.errors %}
+                            {{ form.name(class="form-control form-control-lg is-invalid", placeholder="Name") }}
+                            {% for error in form.name.errors %}
+                                <div class="alert-message block-message error">
                             <span class="badge badge-danger">
                                 {{ error }}
                             </span>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            {{ form.name(class="form-control form-control-lg", placeholder="Name") }}
+                        {% endif %}
                     </div>
-                    {% endfor %}
-                    {% else %}
-                    {{ form.name(class="form-control form-control-lg", placeholder="Name")}}
-                    {% endif %}
-                </div>
-                <div class="form-group" style="width: 500px">
-                    {% if form.username.errors %}
-                    {{ form.username(class="form-control form-control-lg is-invalid", placeholder="User Name")}}
-                    {% for error in form.username.errors %}
-                    <div class="alert-message block-message error">
+                    <div class="form-group" style="width: 500px">
+                        {% if form.username.errors %}
+                            {{ form.username(class="form-control form-control-lg is-invalid", placeholder="User Name") }}
+                            {% for error in form.username.errors %}
+                                <div class="alert-message block-message error">
                             <span class="badge badge-danger">
                                 {{ error }}
                             </span>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            {{ form.username(class="form-control form-control-lg", placeholder="User Name") }}
+                        {% endif %}
                     </div>
-                    {% endfor %}
-                    {% else %}
-                    {{ form.username(class="form-control form-control-lg", placeholder="User Name")}}
-                    {% endif %}
-                </div>
-                <div class="form-group" style="width: 500px">
-                    {% if form.email.errors %}
-                    {{ form.email(class="form-control form-control-lg is-invalid", placeholder="Email")}}
-                    {% for error in form.email.errors %}
-                    <div class="alert-message block-message error">
+                    <div class="form-group" style="width: 500px">
+                        {% if form.email.errors %}
+                            {{ form.email(class="form-control form-control-lg is-invalid", placeholder="Email") }}
+                            {% for error in form.email.errors %}
+                                <div class="alert-message block-message error">
                             <span class="badge badge-danger">
                                 {{ error }}
                             </span>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        {{ form.email(class="form-control form-control-lg", placeholder="Email") }}
                     </div>
-                    {% endfor %}
-                    {% endif %}
-                    {{ form.email(class="form-control form-control-lg", placeholder="Email")}}
-                </div>
-                <div class="form-group">
-                    {{ form.picture(class="btn btn-danger", value="Upload Image") }}
+                    <div class="form-group">
+                        {{ form.picture(class="btn btn-danger", value="Upload Image") }}
 
+                    </div>
+                    <div class="form-group">
+                        <a href="{{ url_for('user.photos', user_id=current_user.id) }}"
+                           class="btn blue-gradient waves waves-effect waves-light">Photos</a>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    {{ form.update(class="btn aqua-gradient waves waves-effect waves-light") }}
                 </div>
-            <div class="form-group">
-                <a href="{{ url_for('user.photos', user_id=current_user.id) }}" class="btn btn-block">Photos</a>
-            </div>
-            </fieldset>
-            <div class="form-group">
-                {{ form.update(class="btn btn-outline-info")}}
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 {% endblock content %}

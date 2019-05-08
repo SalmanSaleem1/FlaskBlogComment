@@ -2,14 +2,14 @@
 
 {% block content %}
     <div class="container">
-        <div class="content-section">
-            <form action="" method="post" enctype="multipart/form-data">
+        <div class="jumbotron">
+            <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
                 <fieldset>
                     {{ form.hidden_tag() }}
                     <legend>{{ legend }}</legend>
                     <div class="form-group">
                         {% if form.title.errors %}
-                            {{ form.title(class="form-control is-invalid", placeholder="Title") }}
+                            {{ form.title(class="form-control is-invalid z-depth-1", placeholder="Title") }}
                             {% for error in form.title.errors %}
                                 <div class="alert-message block-message error">
                             <span class="badge badge-danger">
@@ -18,12 +18,12 @@
                                 </div>
                             {% endfor %}
                         {% else %}
-                            {{ form.title(class="form-control ", placeholder="Title") }}
+                            {{ form.title(class="form-control z-depth-1", placeholder="Title") }}
                         {% endif %}
                     </div>
                     <div class="form-group">
                         {% if form.content.errors %}
-                            {{ form.content(class="form-control form-control-lg is-invalid", placeholder="Title") }}
+                            {{ form.content(class="form-control form-control-lg z-depth-1 is-invalid", placeholder="Title") }}
                             {% for error in form.content.errors %}
                                 <div class="alert-message block-message error">
                             <span class="badge badge-danger">
@@ -32,12 +32,20 @@
                                 </div>
                             {% endfor %}
                         {% else %}
-                            {{ form.content(class="form-control form-control-lg", placeholder="Content") }}
+                            {{ form.content(class="form-control form-control-lg z-depth-1", placeholder="Content") }}
                         {% endif %}
                     </div>
-                    <div class="form-group">
-                        {{ form.image_file(class="btn btn-danger", value="Upload Image") }}
-                    </div>
+{#                    <div class="form-group">#}
+{#                        {{ form.image_file(class="file-upload") }}#}
+{##}
+{#                    </div>#}
+                            <script>UPLOADCARE_PUBLIC_KEY = "61d989a81726b7910903";</script>
+                            <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"
+                                    charset="utf-8"></script>
+
+                            <input type="hidden" role="uploadcare-uploader" name="my_file"/>
+
+
                 </fieldset>
                 <center>
                     <div class="form-group">
@@ -49,4 +57,23 @@
         </div>
 
     </div>
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function () {
+            readURL(this);
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 {% endblock %}

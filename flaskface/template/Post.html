@@ -13,9 +13,10 @@
                     <small class="article-title">{{ post.create_at.strftime('%Y-%m-%d') }}</small>
                 </div>
                 {% if post.author== current_user %}
-                    <a class="btn btn-primary"
+                    <a class="btn btn-warning btn-rounded waves-effect waves-light"
                        href="{{ url_for('post.post_update', post_id=post.id) }}">Update</a>
-                    <a class="btn btn-danger mr-2" data-toggle="modal" data-target="#deleteModal" href="">Delete</a>
+                    <a class="btn btn-danger btn-rounded waves-effect waves-light mr-2" data-toggle="modal"
+                       data-target="#deleteModal" href="">Delete</a>
                 {% endif %}
                 <h2><a class="article-title">{{ post.title }}</a></h2>
                 <p class="article-content">{{ post.content }}</p>
@@ -26,6 +27,7 @@
                 </div>
                 <br>
                 <hr>
+
                 <form method="post" autocomplete="off" id="comm">
                     {{ form.hidden_tag() }}
                     <legend>Comments</legend>
@@ -63,24 +65,31 @@
         <!-- Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
              aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+            <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+                <!--Content-->
+                <div class="modal-content text-center">
+                    <!--Header-->
+                    <div class="modal-header d-flex justify-content-center">
+                        <p class="heading">Are you sure want to delete</p>
                     </div>
+
+                    <!--Body-->
                     <div class="modal-body">
-                        Are you sure want to delete?
+
+                        <i class="fas fa-times fa-4x animated rotateIn"></i>
+
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <a class="btn btn-danger" href="{{ url_for('post.post_delete', post_id=post.id) }}">Delete</a>
+
+                    <!--Footer-->
+                    <div class="modal-footer flex-center">
+                        <a class="btn  btn-outline-danger" href="{{ url_for('post.post_delete', post_id=post.id) }}">Yes</a>
+                        <a type="button" class="btn btn-danger waves-effect" data-dismiss="modal">No</a>
                     </div>
                 </div>
+                <!--/.Content-->
             </div>
         </div>
+
 
         <!--ModelDetail-->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

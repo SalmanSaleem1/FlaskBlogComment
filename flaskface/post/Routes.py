@@ -15,8 +15,8 @@ post = Blueprint('post', __name__)
 def new_post():
     form = NewPostForm()
     if form.validate_on_submit():
-        if form.image_file.data:
-            picture_file = save_picture(form.image_file.data)
+        if request.form['my_file']:
+            picture_file = save_picture(request.form['my_file'])
 
         post = Post(title=form.title.data, content=form.content.data, image_file=picture_file, author=current_user)
         db.session.add(post)
