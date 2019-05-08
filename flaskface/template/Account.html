@@ -57,7 +57,11 @@
                 </div>
                 <div class="form-group">
                     {{ form.picture(class="btn btn-danger", value="Upload Image") }}
+
                 </div>
+            <div class="form-group">
+                <a href="{{ url_for('user.photos', user_id=current_user.id) }}" class="btn btn-block">Photos</a>
+            </div>
             </fieldset>
             <div class="form-group">
                 {{ form.update(class="btn btn-outline-info")}}

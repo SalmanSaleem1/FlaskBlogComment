@@ -41,6 +41,7 @@ class AccountForm(FlaskForm):
     username = StringField(validators=[DataRequired(), Length(min=2, max=25)])
     email = StringField(validators=[DataRequired(), Length(min=2, max=35), Email()])
     picture = FileField('Upload Image', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
+
     update = SubmitField('Update')
 
 

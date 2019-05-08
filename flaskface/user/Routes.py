@@ -127,3 +127,9 @@ def reset_token(token):
         flash(Constants.UPDATE_PASSWORD, 'success')
         return redirect(url_for('user.login'))
     return render_template('ResetPassword.html', title='Reset Password', form=form)
+
+
+@user.route('/photos/<int:user_id>', methods=['POST', 'GET'])
+def photos(user_id):
+    user_pics = Post.query.filter_by(user_id=current_user.id)
+    return render_template('Photos.html', user_pics=user_pics)

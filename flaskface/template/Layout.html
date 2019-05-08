@@ -16,32 +16,18 @@
     <link href="{{url_for('static', filename = 'mdb.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename = 'all.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename = 'fullbackground.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename = 'photos.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename = 'tab.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename = 'imagePrivew.css') }}">
 </head>
 
 
 <body>
 
-
-<!--Grid row-->
-
-
-
-
         {% include 'include/_TransParentNavBar.html'%}
         {% block content %}
 
         {% endblock %}
-
-
-
-
-<!--Grid column-->
-
-<!--Grid column-->
-
-<!--Grid row-->
-
-
 <!--{% with messages = get_flashed_messages(with_categories=true) %}-->
 <!--Categories: success (green), info (blue), warning (yellow), danger (red)-->
 <!--{% if messages %}-->
@@ -64,6 +50,7 @@
 <script type="text/javascript" src="{{url_for('static',filename = 'bootstrap.js')}}"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{{url_for('static',filename = 'mdb.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static',filename = 'tab.js')}}"></script>
 <script>
     new WOW().init();
 </script>
