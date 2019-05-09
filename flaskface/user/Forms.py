@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, ValidationError
-from flask_wtf.file import FileAllowed, FileField, FileRequired
+from flask_wtf.file import FileAllowed, FileField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 from flaskface.Models import User
 from flaskface.constant.app_constant import Constants
@@ -17,12 +17,12 @@ class RegisterForm(FlaskForm):
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user:
-            raise ValidationError(Constants.USER_ALREADY_EXIST)
+            raise ValidationError(f"{Constants.USER_ALREADY_EXIST}")
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user:
-            raise ValidationError(Constants.EMAIL_ALREADY_EXIST)
+            raise ValidationError(f"{Constants.EMAIL_ALREADY_EXIST}")
 
 
 class LoginForm(FlaskForm):
@@ -33,7 +33,7 @@ class LoginForm(FlaskForm):
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user is None:
-            raise ValidationError(Constants.FIRST_REGISTER_EMAIL)
+            raise ValidationError(f"{Constants.FIRST_REGISTER_EMAIL}")
 
 
 class AccountForm(FlaskForm):

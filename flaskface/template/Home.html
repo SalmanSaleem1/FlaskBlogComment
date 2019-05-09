@@ -17,10 +17,6 @@
                            href="{{ url_for('post.post_detail', post_id=post.id) }}">{{ post.title }}</a>
                     </h2>
                     <p class="article-content">{{ post.content }}</p>
-{#                    <a target="_blank" href="{{ url_for('static', filename='post_pic/' + post.image_file) }}">#}
-{#                        <img class="rounded float-left" style="width: 300px; height: 200px"#}
-{#                             src="{{ url_for('https://ucarecdn.com/' + post.image_file) }}">#}
-{#                    </a>#}
                     <a target="_blank" href="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
                         <img class="rounded float-left" style="width: 300px; height: 200px"
                              src="{{ url_for('static', filename='post_pic/' + post.image_file) }}">

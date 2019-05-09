@@ -1,5 +1,4 @@
 {% extends 'Layout.html' %}
-
 {% block content %}
     <div class="container">
         <div class="jumbotron">
@@ -35,45 +34,23 @@
                             {{ form.content(class="form-control form-control-lg z-depth-1", placeholder="Content") }}
                         {% endif %}
                     </div>
-{#                    <div class="form-group">#}
-{#                        {{ form.image_file(class="file-upload") }}#}
-{##}
-{#                    </div>#}
-                            <script>UPLOADCARE_PUBLIC_KEY = "61d989a81726b7910903";</script>
-                            <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"
-                                    charset="utf-8"></script>
-
-                            <input type="hidden" role="uploadcare-uploader" name="my_file"/>
-
-
+                    <div class="form-group">
+                        {{ form.image_file(class="btn btn-primary") }}
+                    </div>
+                    {#                    <script>UPLOADCARE_PUBLIC_KEY = "61d989a81726b7910903";</script>#}
+                    {#                    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"#}
+                    {#                            charset="utf-8"></script>#}
+                    {#                    <input type="hidden" role="uploadcare-uploader" name="my_file"/>#}
                 </fieldset>
                 <center>
                     <div class="form-group">
                         {{ form.submit(class="btn btn-outline-info") }}
                     </div>
                 </center>
-
             </form>
         </div>
-
     </div>
     <script>
-        function readURL(input) {
-
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#blah').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#imgInp").change(function () {
-            readURL(this);
-        });
+        $('.file-upload').file_upload();
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 {% endblock %}

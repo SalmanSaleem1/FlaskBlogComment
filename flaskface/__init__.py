@@ -16,6 +16,12 @@ pusher_client = Pusher(
     cluster='ap2',
     ssl=True)
 
+app.config['SECRET_KEY'] = 'lablam.2017'
+app.config['RECAPTCHA_USE_SSL'] = False
+app.config['RECAPTCHA_PUBLIC_KEY'] = '6Le-lKIUAAAAAJBMVig-TrLnqIz0Eu0q6vvIXXRo'
+app.config['RECAPTCHA_PRIVATE_KEY'] = '6Le-lKIUAAAAADiEhXqGkzbIy5fccpu-DZ9oXhZJ'
+app.config['RECAPTCHA_OPTIONS'] = {'theme': 'black'}
+
 app.config.from_object(BaseConfig)
 db = SQLAlchemy(app)
 

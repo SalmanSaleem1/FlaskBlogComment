@@ -15,16 +15,12 @@ def registers():
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
     form = RegisterForm()
-    # if form.validate_on_submit():
-    if request.method == 'POST':
-        # hashed_passeord = bcrypt.generate_password_hash(form.password.data)
-        name = request.form['name']
-        username = request.form['username']
-        email = request.form['email']
-        password = request.form['password']
-        user = User(name=name, username=username, email=email, password=password)
+    if form.validate_on_submit():
+        # hashed_password = bcrypt.generate_password_hash(form.password.data)
+        user = User(name=form.name.data, username=form.username.data, email=form.email.data,
+                    password=form.password.data)
         # user = User(name=form.name.data, username=form.name.data, email=form.email.data,
-        #             password=form.password.data)
+        #             password=hashed_password)
         sechma = UserSchema()
         result = sechma.dump(user)
         pprint(result.data)
@@ -33,7 +29,7 @@ def registers():
         flash('Register Successfully', 'success')
         return redirect(url_for('user.login'))
 
-    return render_template('register.html', title='Register', form=form)
+    return render_template('Register.html', title='Register', form=form)
 
 
 @user.route('/login', methods=['POST', 'GET'])
@@ -48,12 +44,12 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
     form = LoginForm()
-    # if form.validate_on_submit():
-    if request.method == 'POST':
+    if form.validate_on_submit():
+        # if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        user = User.query.filter_by(email=email).first()
-        if user and bcrypt.check_password_hash(user.password, password):
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user)
             schema = UserSchema()
             result = schema.dump(user)

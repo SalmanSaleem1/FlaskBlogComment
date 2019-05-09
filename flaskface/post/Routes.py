@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, abort, flash, request
 from flaskface.post.Forms import NewPostForm, AddCommentForm
 from flaskface.Models import Post, PostSchema, Comment
-from flaskface import db, pusher_client
+from flaskface import db, pusher_client, app
 from flask_login import current_user, login_required
 from marshmallow import pprint
 from flaskface.constant.app_constant import Constants
@@ -15,10 +15,10 @@ post = Blueprint('post', __name__)
 def new_post():
     form = NewPostForm()
     if form.validate_on_submit():
-        if request.form['my_file']:
-            picture_file = save_picture(request.form['my_file'])
-
-        post = Post(title=form.title.data, content=form.content.data, image_file=picture_file, author=current_user)
+        if form.image_file.data:
+            picture_file = save_picture(form.image_file.data)
+        post = Post(title=form.title.data, content=form.content.data, image_file=picture_file,
+                    author=current_user)
         db.session.add(post)
         db.session.commit()
         sechma = PostSchema()
