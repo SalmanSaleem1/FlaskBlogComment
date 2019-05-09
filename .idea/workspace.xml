@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7303280b-2407-481f-9a5e-21257a22b5e4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/flaskface/blog.db" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/blog.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskface/main/Routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/main/Routes.py" afterDir="false" />
-    </list>
+    <list default="true" id="7303280b-2407-481f-9a5e-21257a22b5e4" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -312,12 +309,12 @@
       <workItem from="1557299956938" duration="15414000" />
       <workItem from="1557338763139" duration="5422000" />
       <workItem from="1557378714070" duration="11642000" />
-      <workItem from="1557390483006" duration="5477000" />
+      <workItem from="1557390483006" duration="5738000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57857000" />
+    <option name="totallyTimeSpent" value="58118000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
