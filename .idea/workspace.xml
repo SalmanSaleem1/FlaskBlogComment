@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7303280b-2407-481f-9a5e-21257a22b5e4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskface/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskface/blog.db" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/blog.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskface/main/Routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/main/Routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskface/post/Routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/post/Routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskface/static/fileUpload.css" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/static/fileUpload.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskface/template/Home.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/template/Home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskface/template/Layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/template/Layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskface/template/LoginForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/template/LoginForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskface/template/NewPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/template/NewPost.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskface/template/Register.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/template/Register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskface/user/Forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/user/Forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskface/user/Routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/user/Routes.py" afterDir="false" />
-    </list>
+    <list default="true" id="7303280b-2407-481f-9a5e-21257a22b5e4" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,8 +58,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+            <state relative-caret-position="212">
+              <caret line="29" column="11" lean-forward="true" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -323,22 +309,23 @@
       <workItem from="1557299956938" duration="15414000" />
       <workItem from="1557338763139" duration="5422000" />
       <workItem from="1557378714070" duration="11642000" />
-      <workItem from="1557390483006" duration="4618000" />
+      <workItem from="1557390483006" duration="4980000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56998000" />
+    <option name="totallyTimeSpent" value="57360000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23703113" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32899022" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3990228" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -347,7 +334,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3257329" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3257329" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -371,7 +358,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/FlaskBlogComment$run.coverage" NAME="run Coverage Results" MODIFIED="1557397727240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/flaskface" />
+    <SUITE FILE_PATH="coverage/FlaskBlogComment$run.coverage" NAME="run Coverage Results" MODIFIED="1557400416924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/flaskface" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/flaskface/static/style.css">
@@ -612,8 +599,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+        <state relative-caret-position="212">
+          <caret line="29" column="11" lean-forward="true" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
         </state>
       </provider>
     </entry>
