@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7303280b-2407-481f-9a5e-21257a22b5e4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskface/Models.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/Models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskface/template/Layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/template/Layout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flaskface/template/Post.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/template/Post.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,11 +49,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flaskface/template/Post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="46" column="73" lean-forward="true" selection-start-line="46" selection-start-column="73" selection-end-line="46" selection-end-column="73" />
+            <state relative-caret-position="227">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/flaskface/template/Layout.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -126,7 +134,6 @@
         <option value="$PROJECT_DIR$/flaskface/template/Photos.html" />
         <option value="$PROJECT_DIR$/flaskface/user/Utils.py" />
         <option value="$PROJECT_DIR$/flaskface/static/fileUpload.css" />
-        <option value="$PROJECT_DIR$/flaskface/template/Layout.html" />
         <option value="$PROJECT_DIR$/flaskface/post/utils.py" />
         <option value="$PROJECT_DIR$/flaskface/post/Routes.py" />
         <option value="$PROJECT_DIR$/flaskface/template/Home.html" />
@@ -140,6 +147,7 @@
         <option value="$PROJECT_DIR$/flaskface/main/Routes.py" />
         <option value="$PROJECT_DIR$/flaskface/Models.py" />
         <option value="$PROJECT_DIR$/flaskface/template/Post.html" />
+        <option value="$PROJECT_DIR$/flaskface/template/Layout.html" />
       </list>
     </option>
   </component>
@@ -287,12 +295,12 @@
       <workItem from="1557299956938" duration="15414000" />
       <workItem from="1557338763139" duration="5422000" />
       <workItem from="1557378714070" duration="11642000" />
-      <workItem from="1557390483006" duration="8319000" />
+      <workItem from="1557390483006" duration="8382000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60699000" />
+    <option name="totallyTimeSpent" value="60762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
@@ -493,13 +501,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flaskface/template/Layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="21" column="91" selection-start-line="21" selection-start-column="91" selection-end-line="21" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flaskface/template/LoginForm.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -575,8 +576,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flaskface/template/Post.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="46" column="73" lean-forward="true" selection-start-line="46" selection-start-column="73" selection-end-line="46" selection-end-column="73" />
+        <state relative-caret-position="227">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskface/template/Layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
