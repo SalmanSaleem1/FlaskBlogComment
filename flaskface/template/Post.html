@@ -1,123 +1,120 @@
 {% extends 'Layout.html' %}
 {% block content %}
-    <div class="container">
-
-
-        <article class="media content-section">
-            <img class="rounded-circle account-img"
-                 src="{{ url_for('static', filename='profile_pic/'+ post.author.image_file) }}">
-            <div class="media-body">
-                <div class="article-metadata">
-                    <a class="article-title"
-                       href="{{ url_for('user.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
-                    <small class="article-title">{{ post.create_at.strftime('%Y-%m-%d') }}</small>
-                </div>
-                {% if post.author== current_user %}
-                    <a class="btn btn-warning btn-rounded waves-effect waves-light"
-                       href="{{ url_for('post.post_update', post_id=post.id) }}">Update</a>
-                    <a class="btn btn-danger btn-rounded waves-effect waves-light mr-2" data-toggle="modal"
-                       data-target="#deleteModal" href="">Delete</a>
-                {% endif %}
-                <h2><a class="article-title">{{ post.title }}</a></h2>
-                <p class="article-content">{{ post.content }}</p>
-                <br>
-                <div class="form-group">
-                    <img class="rounded float-left" style="width: 300px; height: 200px"
-                         src="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
-                </div>
-                <br>
-                <hr>
-
-                <form method="post" autocomplete="off" id="comm">
-                    {{ form.hidden_tag() }}
-                    <legend>Comments</legend>
-                    <div class="form-group">
-                        <input type="text" name="myComment" placeholder="Comment" class="form-control from-control-lg">
-                    </div>
-                </form>
-                <div>
-                    {% for com in comm %}
-                        <div onmouseover="this.style.background='red';"
-                             onmouseout="this.style.background='white';">
-                            <hr>
-                            <a href="">{{ com.user_id }}</a>
-                            <hr>
-                        </div>
-                        <div id="mydiv" onmouseover="this.style.background='skyblue';"
-                             onmouseout="this.style.background='white';">
-                            <hr>
-                            <h5>{{ com.body }}</h5>
-
-                            <a class="btn btn-primary"
-                               href="{{ url_for('post.delete_comment', com_id=com.id) }}">Delete</a>
-
-                            <!--                    <button type="button" class="btn btn-danger">Delete</button>-->
-                            <hr>
-                        </div>
-
-                    {% endfor %}
-                </div>
+    <article class="media content-section">
+        <img class="rounded-circle account-img"
+             src="{{ url_for('static', filename='profile_pic/'+ post.author.image_file) }}">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="article-title"
+                   href="{{ url_for('user.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+                <small class="article-title">{{ post.create_at.strftime('%Y-%m-%d') }}</small>
             </div>
+            {% if post.author== current_user %}
+                <a class="btn btn-warning btn-rounded waves-effect waves-light"
+                   href="{{ url_for('post.post_update', post_id=post.id) }}">Update</a>
+                <a class="btn btn-danger btn-rounded waves-effect waves-light mr-2" data-toggle="modal"
+                   data-target="#deleteModal" href="">Delete</a>
+            {% endif %}
+            <h2><a class="article-title">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+            <br>
+            <div class="form-group">
+                <img class="rounded float-left" style="width: 300px; height: 200px"
+                     src="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
+            </div>
+            <br>
+            <hr>
 
-        </article>
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-                <!--Content-->
-                <div class="modal-content text-center">
-                    <!--Header-->
-                    <div class="modal-header d-flex justify-content-center">
-                        <p class="heading">Are you sure want to delete</p>
-                    </div>
-
-                    <!--Body-->
-                    <div class="modal-body">
-
-                        <i class="fas fa-times fa-4x animated rotateIn"></i>
-
-                    </div>
-
-                    <!--Footer-->
-                    <div class="modal-footer flex-center">
-                        <a class="btn  btn-outline-danger" href="{{ url_for('post.post_delete', post_id=post.id) }}">Yes</a>
-                        <a type="button" class="btn btn-danger waves-effect" data-dismiss="modal">No</a>
-                    </div>
+            <form method="post" autocomplete="off" id="comm">
+                {{ form.hidden_tag() }}
+                <legend>Comments</legend>
+                <div class="form-group">
+                    <input type="text" name="myComment" placeholder="Comment" class="form-control from-control-lg">
                 </div>
-                <!--/.Content-->
+            </form>
+            <div>
+                {% for com in comm %}
+                    <div onmouseover="this.style.background='red';"
+                         onmouseout="this.style.background='white';">
+                        <hr>
+                        <a href="">{{ com.user_id }}</a>
+                        <hr>
+                    </div>
+                    <div id="mydiv" onmouseover="this.style.background='skyblue';"
+                         onmouseout="this.style.background='white';">
+                        <hr>
+                        <h5>{{ com.body }}</h5>
+
+                        {#                            <a class="btn btn-primary"#}
+                        {#                               href="{{ url_for('post.delete_comment', com_id=com.id) }}">Delete</a>#}
+
+
+                        <!--                    <button type="button" class="btn btn-danger">Delete</button>-->
+                        <hr>
+                    </div>
+
+                {% endfor %}
             </div>
         </div>
 
+    </article>
 
-        <!--ModelDetail-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="" method="post">
-                            <div class="form-group">
-                                <!--                            <label for="recipient-name" class="col-form-label">Recipient:</label>-->
 
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">Message:</label>
-                                <textarea class="form-control" id="message-text"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send message</button>
-                    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div class="modal-header d-flex justify-content-center">
+                    <p class="heading">Are you sure want to delete</p>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+
+                    <i class="fas fa-times fa-4x animated rotateIn"></i>
+
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer flex-center">
+                    <a class="btn  btn-outline-danger" href="{{ url_for('post.post_delete', post_id=post.id) }}">Yes</a>
+                    <a type="button" class="btn btn-danger waves-effect" data-dismiss="modal">No</a>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+
+
+    <!--ModelDetail-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <!--                            <label for="recipient-name" class="col-form-label">Recipient:</label>-->
+
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
                 </div>
             </div>
         </div>

@@ -1,109 +1,177 @@
-<!DOCTYPE html>
-{% extends 'Layout.html' %}
-{% block content %}
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Material Design Bootstrap Template</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="{{ url_for('static', filename = 'css/mdb.min.css') }}" rel="stylesheet">
+    <style>
+        /* Required for full background image */
 
-    <!-- Main navigation -->
-    <header>
-        <!-- Navbar -->
+        html,
+        body,
+        header,
+        .view {
+            height: 100%;
+        }
 
-        <!-- Navbar -->
-        <!-- Full Page Intro -->
-        <div class="view"
-             style="background-image: url('http://mdbootstrap.com/img/Photos/Others/images/91.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-            <!-- Mask & flexbox options-->
-            <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
-                <!-- Content -->
-                <div class="container">
-                    <!--Grid row-->
-                    <div class="row mt-5">
-                        <!--Grid column-->
-                        <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text text-center text-md-left">
-                            <h1 class="h1-responsive font-weight-bold wow fadeInLeft" style="color: white"
-                                data-wow-delay="0.3s">Sign up right
-                                now! </h1>
-                            <hr class="hr-light" data-wow-delay="0.3s">
-                        </div>
-                        <!--Grid column-->
-                        <!--Grid column-->
-                        <div class="col-md-6 col-xl-5 mb-4">
-                            <form action="" method="post">
-                                {{ form.hidden_tag() }}
+        @media (max-width: 740px) {
+            html,
+            body,
+            header,
+            .view {
+                height: 1000px;
+            }
+        }
+
+        @media (min-width: 800px) and (max-width: 850px) {
+            html,
+            body,
+            header,
+            .view {
+                height: 650px;
+            }
+        }
+
+        .top-nav-collapse {
+            background-color: #3f51b5 !important;
+        }
+
+        .navbar:not(.top-nav-collapse) {
+            background: transparent !important;
+        }
+
+        @media (max-width: 991px) {
+            .navbar:not(.top-nav-collapse) {
+                background: #3f51b5 !important;
+            }
+        }
+
+        .rgba-gradient {
+            background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+            background: -webkit-gradient(linear, 45deg, from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%));
+            background: linear-gradient(to 45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+        }
+
+        .card {
+            background-color: rgba(126, 123, 215, 0.2);
+        }
+
+        .md-form label {
+            color: #ffffff;
+        }
+
+        h6 {
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<!-- Main navigation -->
+<body>
+{% include 'include/_TransParentNavBar.html' %}
+<header>
+    <div class="view"
+         style="background-image: url('http://mdbootstrap.com/img/Photos/Others/images/91.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+        <!-- Mask & flexbox options-->
+        <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
+            <!-- Content -->
+            <div class="container">
+                <!--Grid row-->
+                <div class="row mt-5">
+                    <!--Grid column-->
+                    <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text text-center text-md-left">
+                        <h1 class="h1-responsive font-weight-bold wow fadeInLeft" style="color: white"
+                            data-wow-delay="0.3s">Sign up right
+                            now! </h1>
+                        <hr class="hr-light" data-wow-delay="0.3s">
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-md-6 col-xl-5 mb-4">
+                        <form action="" method="post">
+                            {{ form.hidden_tag() }}
 
 
-                                <div class="card wow fadeInRight" data-wow-delay="0.3s">
-                                    <div class="card-body">
-                                        <fieldset>
-                                            <!--Header-->
-                                            <div class="text-center">
-                                                <h3 class="white-text">
-                                                    <i class="fas fa-user white-text"></i> Login:</h3>
-                                                <hr class="hr-light">
-                                            </div>
-                                            <!--Body-->
-                                            <div class="md-form">
-                                                <i class="fas fa-envelope prefix white-text active"></i>
+                            <div class="card wow fadeInRight" data-wow-delay="0.3s">
+                                <div class="card-body">
+                                    <fieldset>
+                                        <!--Header-->
+                                        <div class="text-center">
+                                            <h3 class="white-text">
+                                                <i class="fas fa-user white-text"></i> Login:</h3>
+                                            <hr class="hr-light">
+                                        </div>
+                                        <!--Body-->
+                                        <div class="md-form">
+                                            <i class="fas fa-envelope prefix white-text active"></i>
 
-                                                {% if form.email.errors %}
-                                                    {{ form.email(class="white-text form-control is-invalid", id="form1") }}
-                                                    <label for="form1" class="active">Email</label>
-                                                    {% for error in form.email.errors %}
-                                                        <div class="alert-message block-message error">
+                                            {% if form.email.errors %}
+                                                {{ form.email(class="white-text form-control is-invalid", id="form1") }}
+                                                <label for="form1" class="active">Email</label>
+                                                {% for error in form.email.errors %}
+                                                    <div class="alert-message block-message error">
                                                             <span class="badge badge-danger">
                                                                 {{ error }}
                                                             </span>
-                                                        </div>
-                                                    {% endfor %}
-                                                {% else %}
-                                                    {{ form.email(class="white-text form-control", id="form1") }}
-                                                    <label for="form1" class="active">Email</label>
-                                                {% endif %}
-                                            </div>
+                                                    </div>
+                                                {% endfor %}
+                                            {% else %}
+                                                {{ form.email(class="white-text form-control", id="form1") }}
+                                                <label for="form1" class="active">Email</label>
+                                            {% endif %}
+                                        </div>
 
-                                            <div class="md-form">
-                                                <i class="fas fa-lock prefix white-text active"></i>
-                                                {% if form.password.errors %}
-                                                    {{ form.password(class="white-text form-control is-invalid", id="form1") }}
-                                                    <label for="form1" class="active">Password</label>
-                                                    {% for error in form.password.errors %}
-                                                        <div class="alert-message block-message error">
+                                        <div class="md-form">
+                                            <i class="fas fa-lock prefix white-text active"></i>
+                                            {% if form.password.errors %}
+                                                {{ form.password(class="white-text form-control is-invalid", id="form1") }}
+                                                <label for="form1" class="active">Password</label>
+                                                {% for error in form.password.errors %}
+                                                    <div class="alert-message block-message error">
                                                         <span class="badge badge-danger">
                                                             {{ error }}
                                                         </span>
-                                                        </div>
-                                                    {% endfor %}
-                                                {% else %}
-                                                    {{ form.password(class="white-text form-control", id="form1") }}
-                                                    <label for="form1" class="active">Password</label>
-                                                {% endif %}
-                                            </div>
-
-                                        </fieldset>
-                                        <div class="text-center mt-4">
-                                            {#                                    <button class="btn btn-indigo">Login</button>#}
-                                            {{ form.submit(class="btn btn-indigo") }}
-                                            <hr class="hr-light mb-3 mt-4">
+                                                    </div>
+                                                {% endfor %}
+                                            {% else %}
+                                                {{ form.password(class="white-text form-control", id="form1") }}
+                                                <label for="form1" class="active">Password</label>
+                                            {% endif %}
                                         </div>
+
+                                    </fieldset>
+                                    <div class="text-center mt-4">
+                                        {#                                    <button class="btn btn-indigo">Login</button>#}
+                                        {{ form.submit(class="btn btn-indigo") }}
+                                        <hr class="hr-light mb-3 mt-4">
                                     </div>
                                 </div>
-
-
-                            </form>
-                        </div>
-                        <!--Grid column-->
+                            </div>
+                        </form>
                     </div>
-                    <!--Grid row-->
+                    <!--Grid column-->
                 </div>
-                <!-- Content -->
             </div>
-            <!-- Mask & flexbox options-->
         </div>
-        <!-- Full Page Intro -->
-    </header>
-    <!-- Main navigation -->
-    <!--Main Layout-->
+        <!-- Mask & flexbox options-->
+    </div>
+    <!-- Full Page Intro -->
+</header>
+<script type="text/javascript" src="{{ url_for('static',filename = 'js/jquery-3.4.0.min.js') }}"></script>
+<!-- Tooltips -->
+<script type="text/javascript" src="{{ url_for('static',filename = 'js/popper.min.js') }}"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="{{ url_for('static',filename = 'js/bootstrap.min.js') }}"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="{{ url_for('static',filename = 'js/mdb.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename = 'tab.js') }}"></script>
+<script>
+    new WOW().init();
+</script>
 
-    <!--Main Layout-->
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-
-{% endblock %}
+</body>

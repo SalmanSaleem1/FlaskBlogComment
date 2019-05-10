@@ -9,48 +9,60 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- Bootstrap core CSS -->
-    <link href="{{url_for('static', filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
-   <link href="{{url_for('static',filename = 'Main.css')}}" rel="stylesheet">
-    <link href="{{url_for('static', filename = 'style.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename = 'Main.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'style.css') }}" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="{{url_for('static', filename = 'css/mdb.min.css')}}" rel="stylesheet">
-    <link href="{{url_for('static', filename = 'all.css')}}" rel="stylesheet">
-    <link href="{{url_for('static', filename = 'fullbackground.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'css/mdb.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'all.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'fullbackground.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename = 'photos.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename = 'tab.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename = 'imagePrivew.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename = 'fileUpload.css') }}">
 </head>
-
 <body>
 
-        {% include 'include/_TransParentNavBar.html'%}
-        {% block content %}
+{% include 'include/_TransParentNavBar.html' %}
+<main role="main" class="container">
+    <div class="row">
 
-        {% endblock %}
-<!--{% with messages = get_flashed_messages(with_categories=true) %}-->
-<!--Categories: success (green), info (blue), warning (yellow), danger (red)-->
-<!--{% if messages %}-->
-<!--{% for category, message in messages %}-->
-<!--<div class="alert alert-{{ category }} alert-dismissible" role="alert">-->
-<!--    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span-->
-<!--            aria-hidden="true">&times;</span></button>-->
-<!--    {{ message }}-->
-<!--</div>-->
-<!--{% endfor %}-->
-<!--{% endif %}-->
-<!--{% endwith %}-->
+            {% with messages = get_flashed_messages(with_categories = true) %}
+                {% if messages %}
+                    {% for category , message in messages %}
+                        <div class="alert-alert{{ category }}">
+                            <span style="color: blue">{{ message }}</span>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+
+    </div>
+</main>
+{#{% with messages = get_flashed_messages(with_categories = true) %}#}
+{#    {% if messages %}#}
+{#        {% for category , message in messages %}#}
+{#            <div class="alert-alert{{ category }}">#}
+{#                <span style="color: blue">{{ message }}</span>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    {% endif %}#}
+{#{% endwith %}#}
+{#{% block content %}#}
+{##}
+{#{% endblock %}#}
 
 
 <!--<script src="https://js.pusher.com/4.4/pusher.min.js"></script>-->
-<script type="text/javascript" src="{{url_for('static',filename = 'js/jquery-3.4.0.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename = 'js/jquery-3.4.0.min.js') }}"></script>
 <!-- Tooltips -->
-<script type="text/javascript" src="{{url_for('static',filename = 'js/popper.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename = 'js/popper.min.js') }}"></script>
 <!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="{{url_for('static',filename = 'js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename = 'js/bootstrap.min.js') }}"></script>
 <!-- MDB core JavaScript -->
-<script type="text/javascript" src="{{url_for('static',filename = 'js/mdb.min.js')}}"></script>
-<script type="text/javascript" src="{{url_for('static',filename = 'tab.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename = 'js/mdb.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename = 'tab.js') }}"></script>
 <script>
     new WOW().init();
 </script>

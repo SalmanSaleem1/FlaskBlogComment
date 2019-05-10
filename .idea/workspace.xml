@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7303280b-2407-481f-9a5e-21257a22b5e4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskface/template/Layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/template/Layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskface/template/Post.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/template/Post.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,14 +37,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flaskface/main/Routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="165">
+              <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flaskface/template/Post.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/flaskface/template/Layout.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -70,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flaskface/Models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="61" column="71" selection-start-line="61" selection-start-column="63" selection-end-line="61" selection-end-column="71" />
+            <state relative-caret-position="195">
+              <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -96,7 +114,6 @@
       <list>
         <option value="$PROJECT_DIR$/flaskface/config.py" />
         <option value="$PROJECT_DIR$/flaskface/post/Forms.py" />
-        <option value="$PROJECT_DIR$/flaskface/Models.py" />
         <option value="$PROJECT_DIR$/flaskface/static/photos.css" />
         <option value="$PROJECT_DIR$/flaskface/static/tab.css" />
         <option value="$PROJECT_DIR$/flaskface/template/UserPosts.html" />
@@ -115,10 +132,8 @@
         <option value="$PROJECT_DIR$/flaskface/static/js/jquery-3.4.0.min.js" />
         <option value="$PROJECT_DIR$/flaskface/static/js/mdb.min.js" />
         <option value="$PROJECT_DIR$/flaskface/template/Photos.html" />
-        <option value="$PROJECT_DIR$/flaskface/template/Post.html" />
         <option value="$PROJECT_DIR$/flaskface/user/Utils.py" />
         <option value="$PROJECT_DIR$/flaskface/static/fileUpload.css" />
-        <option value="$PROJECT_DIR$/flaskface/template/Layout.html" />
         <option value="$PROJECT_DIR$/flaskface/post/utils.py" />
         <option value="$PROJECT_DIR$/flaskface/post/Routes.py" />
         <option value="$PROJECT_DIR$/flaskface/template/Home.html" />
@@ -130,6 +145,9 @@
         <option value="$PROJECT_DIR$/flaskface/template/LoginForm.html" />
         <option value="$PROJECT_DIR$/flaskface/template/Register.html" />
         <option value="$PROJECT_DIR$/flaskface/main/Routes.py" />
+        <option value="$PROJECT_DIR$/flaskface/Models.py" />
+        <option value="$PROJECT_DIR$/flaskface/template/Post.html" />
+        <option value="$PROJECT_DIR$/flaskface/template/Layout.html" />
       </list>
     </option>
   </component>
@@ -277,12 +295,12 @@
       <workItem from="1557299956938" duration="15414000" />
       <workItem from="1557338763139" duration="5422000" />
       <workItem from="1557378714070" duration="11642000" />
-      <workItem from="1557390483006" duration="6822000" />
+      <workItem from="1557390483006" duration="8382000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59202000" />
+    <option name="totallyTimeSpent" value="60762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
@@ -466,13 +484,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flaskface/template/Post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="72" column="70" selection-start-line="72" selection-start-column="70" selection-end-line="72" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flaskface/template/NewPost.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -487,13 +498,6 @@
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flaskface/template/Layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="21" column="91" selection-start-line="21" selection-start-column="91" selection-end-line="21" selection-end-column="91" />
         </state>
       </provider>
     </entry>
@@ -532,22 +536,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flaskface/Models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="61" column="71" selection-start-line="61" selection-start-column="63" selection-end-line="61" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flaskface/main/Form.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flaskface/static/post_pic/0e6d0254d21dc57b.jpeg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -562,11 +550,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flaskface/main/Routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="165">
+          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskface/main/Form.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskface/Models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskface/template/Post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskface/template/Layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
