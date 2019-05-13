@@ -87,6 +87,37 @@ def account():
     return render_template('Account.html', title='Account', form=form, image_file=image_file)
 
 
+@user.route('/follow/<string:username>', methods=['POST', 'GET'])
+def follow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash(f"User {username} not Found")
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash(f"You can not follow yourself", "warning")
+        return redirect(url_for('account', username=username))
+    current_user.follow(user)
+    db.session.commit()
+    flash(f'You are following {username}', "success")
+    return redirect(url_for('account', username=username))
+
+
+@user.route('/unfollow/<username>', methods=['POST', 'GET'])
+@login_required
+def unfollow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash(f'User {username} not found.')
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash(f'You cannot unfollow yourself!', 'warning')
+        return redirect(url_for('user', username=username))
+    current_user.unfollow(user)
+    db.session.commit()
+    flash(f'You are not following {username}.', 'info')
+    return redirect(url_for('account', username=username))
+
+
 @user.route('/user/<string:username>')
 @login_required
 def user_posts(username):

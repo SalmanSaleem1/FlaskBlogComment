@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename = 'tab.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename = 'imagePrivew.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename = 'fileUpload.css') }}">
+{#    <link rel="stylesheet" href="{{ url_for('static', filename='chat/bootstraps.css') }}">#}
+{#    <link rel="stylesheet" href="{{ url_for('static', filename='chat/apps.css') }}">#}
 </head>
 <body>
 
@@ -27,16 +29,16 @@
 <main role="main" class="container">
     <div class="row">
 
-            {% with messages = get_flashed_messages(with_categories = true) %}
-                {% if messages %}
-                    {% for category , message in messages %}
-                        <div class="alert-alert{{ category }}">
-                            <span style="color: blue">{{ message }}</span>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-            {% block content %}{% endblock %}
+        {% with messages = get_flashed_messages(with_categories = true) %}
+            {% if messages %}
+                {% for category , message in messages %}
+                    <div class="alert-alert{{ category }}">
+                        <span style="color: blue">{{ message }}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
 
     </div>
 </main>
@@ -63,6 +65,14 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{{ url_for('static',filename = 'js/mdb.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename = 'tab.js') }}"></script>
+
+
+<script src="https://js.pusher.com/4.0/pusher.min.js"></script>
+<script src="{{ url_for('static', filename='chat/js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='chat/js/popper.js') }}"></script>
+<script src="{{ url_for('static', filename='chat/js/bootstrap.js') }}"></script>
+<script src="{{ url_for('static', filename='chat/js/axios.js') }}"></script>
+<script src="{{ url_for('static', filename='chat/js/app.js') }}"></script>
 <script>
     new WOW().init();
 </script>

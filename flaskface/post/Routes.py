@@ -43,11 +43,13 @@ def post_update(post_id):
             post.image_file = picture_file
         post.title = form.title.data
         post.content = form.content.data
+
         db.session.commit()
         flash(f'{Constants.UPDATE_SUCCESS}', 'success')
         return redirect(url_for('main.home'))
     form.title.data = post.title
     form.content.data = post.content
+
     schema = PostSchema()
     result = schema.load(post)
     pprint({'Post Id': result})

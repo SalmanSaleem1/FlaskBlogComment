@@ -9,6 +9,12 @@ def get_user(id):
     return User.query.get(int(id))
 
 
+followers = db.Table('followers',
+                     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
+                     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
+                     )
+
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60))
@@ -16,6 +22,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(60), nullable=False, unique=True)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60))
+    followed = db.relationship('User', secondary=followers, primaryjoin=(followers.c.follower_id == id),
+                               secondaryjoin=(followers.c.followed_id == id),
+                               backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
     posts = db.relationship('Post', backref='author', lazy=True)
 
     def get_reset_token(self, expire_time=1800):
@@ -37,6 +46,18 @@ class User(db.Model, UserMixin):
         self.username = username
         self.email = email
         self.password = bcrypt.generate_password_hash(password)
+
+    def follow(self, user):
+        if not self.is_following(user):
+            self.followed.append(user)
+
+    def unfollow(self, user):
+        if self.is_following(user):
+            self.followed.remove(user)
+
+    def is_following(self, user):
+        return self.followed.filter(
+            followers.c.followed_id == user.id).count() > 0
 
     def is_authenticated(self):
         return True

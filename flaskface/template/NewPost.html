@@ -33,8 +33,10 @@
                         {{ form.content(class="form-control form-control-lg z-depth-1", placeholder="Content") }}
                     {% endif %}
                 </div>
+            <div class="form-group">
                 <img id="blah" style="width: 200px; height: 200px"/>
                 {{ form.image_file(class="btn btn-primary", onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])") }}
+                </div>
             </fieldset>
             <center>
                 <div class="form-group">

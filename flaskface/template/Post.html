@@ -17,17 +17,17 @@
             {% endif %}
             <h2><a class="article-title">{{ post.title }}</a></h2>
             <p class="article-content">{{ post.content }}</p>
-            <br>
-            <div class="form-group">
-                <img class="rounded float-left" style="width: 300px; height: 200px"
-                     src="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
-            </div>
-            <br>
-            <hr>
 
-            <form method="post" autocomplete="off" id="comm">
+            <div class="form-group">
+                <a href="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
+                    <img class="rounded float-left" style="width: 30%; height: 30%;"
+                         src="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
+                </a>
+            </div>
+
+            <form method="post" autocomplete="off">
                 {{ form.hidden_tag() }}
-                <legend>Comments</legend>
+
                 <div class="form-group">
                     <input type="text" name="myComment" placeholder="Comment" class="form-control from-control-lg">
                 </div>
@@ -44,22 +44,15 @@
                          onmouseout="this.style.background='white';">
                         <hr>
                         <h5>{{ com.body }}</h5>
-
                         {#                            <a class="btn btn-primary"#}
                         {#                               href="{{ url_for('post.delete_comment', com_id=com.id) }}">Delete</a>#}
-
-
                         <!--                    <button type="button" class="btn btn-danger">Delete</button>-->
                         <hr>
                     </div>
-
                 {% endfor %}
             </div>
         </div>
-
     </article>
-
-
     <!-- Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
          aria-hidden="true">
@@ -70,14 +63,10 @@
                 <div class="modal-header d-flex justify-content-center">
                     <p class="heading">Are you sure want to delete</p>
                 </div>
-
                 <!--Body-->
                 <div class="modal-body">
-
                     <i class="fas fa-times fa-4x animated rotateIn"></i>
-
                 </div>
-
                 <!--Footer-->
                 <div class="modal-footer flex-center">
                     <a class="btn  btn-outline-danger" href="{{ url_for('post.post_delete', post_id=post.id) }}">Yes</a>
@@ -87,8 +76,6 @@
             <!--/.Content-->
         </div>
     </div>
-
-
     <!--ModelDetail-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -119,4 +106,5 @@
             </div>
         </div>
     </div>
-{% endblock content %}
+
+{% endblock %}

@@ -3,7 +3,6 @@
 {% block content %}
     <div class="container">
         <title>{{ user.username }} Posts</title>
-
         <h1>Create posts by {{ user.username }} and total posts are
             <small class="text-muted">{{ posts.total }}</small>
         </h1>
@@ -25,7 +24,6 @@
                 </div>
             </article>
         {% endfor %}
-
         {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
             {% if page_num %}
                 {% if posts.page == page_num %}
