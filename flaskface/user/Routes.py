@@ -1,4 +1,4 @@
-from flaskface import app, db, bcrypt
+from flaskface import db, bcrypt
 from flask import render_template, redirect, request, flash, url_for, Blueprint, jsonify, abort
 from flaskface.user.Forms import RegisterForm, LoginForm, AccountForm, RequestResetForm, RequestPasswordForm
 from flaskface.Models import User, UserSchema, Post
@@ -67,9 +67,17 @@ def logout():
     return redirect(url_for('user.login'))
 
 
+@user.route('/user/<string:username>', methods=['POST', 'GET'])
+@login_required
+def account(username):
+    user = User.query.filter_by(username=username).first_or_404()
+
+    return render_template('Account.html', user=user)
+
+
 @user.route('/account', methods=['POST', 'GET'])
 @login_required
-def account():
+def edit_profile():
     form = AccountForm()
     if form.validate_on_submit():
         if form.picture.data:
@@ -84,7 +92,7 @@ def account():
         form.email.data = current_user.email
         form.name.data = current_user.name
     image_file = url_for('static', filename='profile_pic/' + current_user.image_file)
-    return render_template('Account.html', title='Account', form=form, image_file=image_file)
+    return render_template('Edit_Profile.html', title='Account', form=form, image_file=image_file)
 
 
 @user.route('/follow/<string:username>', methods=['POST', 'GET'])
@@ -99,7 +107,7 @@ def follow(username):
     current_user.follow(user)
     db.session.commit()
     flash(f'You are following {username}', "success")
-    return redirect(url_for('account', username=username))
+    return redirect(url_for('user.account', username=username))
 
 
 @user.route('/unfollow/<username>', methods=['POST', 'GET'])
@@ -115,7 +123,7 @@ def unfollow(username):
     current_user.unfollow(user)
     db.session.commit()
     flash(f'You are not following {username}.', 'info')
-    return redirect(url_for('account', username=username))
+    return redirect(url_for('user.account', username=username))
 
 
 @user.route('/user/<string:username>')
