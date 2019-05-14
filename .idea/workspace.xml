@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7303280b-2407-481f-9a5e-21257a22b5e4" name="Default Changelist" comment="" />
+    <list default="true" id="7303280b-2407-481f-9a5e-21257a22b5e4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/flaskface/template/Register.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskface/template/Register.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,15 +25,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flaskface/template/404.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" column="10" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flaskface/user/Routes.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1890">
@@ -43,8 +36,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flaskface/template/Home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
+            <state relative-caret-position="276">
               <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/flaskface/template/Register.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="186" column="50" selection-start-line="186" selection-start-column="50" selection-end-line="186" selection-end-column="50" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,7 +90,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -147,7 +152,6 @@
         <option value="$PROJECT_DIR$/flaskface/user/Forms.py" />
         <option value="$PROJECT_DIR$/flaskface/static/FileUpload.min.js" />
         <option value="$PROJECT_DIR$/flaskface/template/LoginForm.html" />
-        <option value="$PROJECT_DIR$/flaskface/template/Register.html" />
         <option value="$PROJECT_DIR$/flaskface/static/chat/app.css" />
         <option value="$PROJECT_DIR$/flaskface/static/chat/bootstrap.css" />
         <option value="$PROJECT_DIR$/flaskface/template/index.html" />
@@ -177,6 +181,7 @@
         <option value="$PROJECT_DIR$/flaskface/main/Routes.py" />
         <option value="$PROJECT_DIR$/flaskface/template/include/_TransParentNavBar.html" />
         <option value="$PROJECT_DIR$/Procfile" />
+        <option value="$PROJECT_DIR$/flaskface/template/Register.html" />
       </list>
     </option>
   </component>
@@ -211,32 +216,7 @@
               <item name="FlaskBlogComment" type="b2602c69:ProjectViewProjectNode" />
               <item name="FlaskBlogComment" type="462c0819:PsiDirectoryNode" />
               <item name="flaskface" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FlaskBlogComment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FlaskBlogComment" type="462c0819:PsiDirectoryNode" />
-              <item name="flaskface" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FlaskBlogComment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FlaskBlogComment" type="462c0819:PsiDirectoryNode" />
-              <item name="flaskface" type="462c0819:PsiDirectoryNode" />
               <item name="template" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FlaskBlogComment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FlaskBlogComment" type="462c0819:PsiDirectoryNode" />
-              <item name="flaskface" type="462c0819:PsiDirectoryNode" />
-              <item name="template" type="462c0819:PsiDirectoryNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FlaskBlogComment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FlaskBlogComment" type="462c0819:PsiDirectoryNode" />
-              <item name="flaskface" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -332,15 +312,16 @@
       <workItem from="1557769331239" duration="3086000" />
       <workItem from="1557773676193" duration="33000" />
       <workItem from="1557777551494" duration="1721000" />
-      <workItem from="1557810646109" duration="3211000" />
+      <workItem from="1557810646109" duration="3409000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93312000" />
+    <option name="totallyTimeSpent" value="93510000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27773345" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -507,13 +488,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flaskface/template/Register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="78" column="118" selection-start-line="78" selection-start-column="118" selection-end-line="78" selection-end-column="118" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flaskface/user/CheckDebugData.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -647,13 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flaskface/template/Home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flaskface/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -703,6 +670,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="31" lean-forward="true" selection-start-column="31" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskface/template/Home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskface/template/Register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="186" column="50" selection-start-line="186" selection-start-column="50" selection-end-line="186" selection-end-column="50" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
