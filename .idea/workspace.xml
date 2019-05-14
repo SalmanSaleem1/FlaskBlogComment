@@ -11,17 +11,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flaskface/main/Form.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flaskface/main/Routes.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
@@ -29,15 +18,6 @@
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flaskface/template/Edit_Profile.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
-              <caret line="67" column="29" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -87,11 +67,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flaskface/template/include/_TransParentNavBar.html">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret selection-end-column="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="36" column="17" lean-forward="true" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Procfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -128,7 +126,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/flaskface/static/tab.css" />
         <option value="$PROJECT_DIR$/flaskface/static/tab.js" />
         <option value="$PROJECT_DIR$/flaskface/static/imagePrivew.css" />
         <option value="$PROJECT_DIR$/flaskface/static/css/style.min.css" />
@@ -179,6 +176,7 @@
         <option value="$PROJECT_DIR$/flaskface/template/Home.html" />
         <option value="$PROJECT_DIR$/flaskface/main/Routes.py" />
         <option value="$PROJECT_DIR$/flaskface/template/include/_TransParentNavBar.html" />
+        <option value="$PROJECT_DIR$/Procfile" />
       </list>
     </option>
   </component>
@@ -334,12 +332,12 @@
       <workItem from="1557769331239" duration="3086000" />
       <workItem from="1557773676193" duration="33000" />
       <workItem from="1557777551494" duration="1721000" />
-      <workItem from="1557810646109" duration="2804000" />
+      <workItem from="1557810646109" duration="2965000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92905000" />
+    <option name="totallyTimeSpent" value="93066000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
@@ -418,24 +416,10 @@
     <entry file="file://$PROJECT_DIR$/flaskface/static/post_pic/1b972dbff48836e8.jpg" />
     <entry file="file://$PROJECT_DIR$/flaskface/static/post_pic/1fd14ce5ac25eb80.jpg" />
     <entry file="file://$PROJECT_DIR$/flaskface/static/post_pic/02a36840a66f7414.jpeg" />
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flaskface/static/FileUpload.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2580">
           <caret line="172" column="34" selection-start-line="172" selection-start-column="34" selection-end-line="172" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="31" lean-forward="true" selection-start-column="31" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -706,6 +690,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="36" column="17" lean-forward="true" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="31" />
         </state>
       </provider>
     </entry>
