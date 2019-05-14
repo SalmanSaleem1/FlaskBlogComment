@@ -24,34 +24,24 @@
 <body>
 
 {% include 'include/_TransParentNavBar.html' %}
-<main role="main" class="container">
-    <div class="row">
 
-            {% with messages = get_flashed_messages(with_categories = true) %}
-                {% if messages %}
-                    {% for category , message in messages %}
-                        <div class="alert-alert{{ category }}">
-                            <span style="color: blue">{{ message }}</span>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-            {% block content %}{% endblock %}
+<div class="container">
 
-    </div>
-</main>
-{#{% with messages = get_flashed_messages(with_categories = true) %}#}
-{#    {% if messages %}#}
-{#        {% for category , message in messages %}#}
-{#            <div class="alert-alert{{ category }}">#}
-{#                <span style="color: blue">{{ message }}</span>#}
-{#            </div>#}
-{#        {% endfor %}#}
-{#    {% endif %}#}
-{#{% endwith %}#}
-{#{% block content %}#}
-{##}
-{#{% endblock %}#}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        <!--     Categories: success (green), info (blue), warning (yellow), danger (red)-->
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <!-- <strong>Title</strong> --> {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% block content %}
+    {% endblock %}
+</div>
 
 
 <!--<script src="https://js.pusher.com/4.4/pusher.min.js"></script>-->
@@ -63,6 +53,14 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{{ url_for('static',filename = 'js/mdb.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename = 'tab.js') }}"></script>
+
+
+<script src="https://js.pusher.com/4.0/pusher.min.js"></script>
+<script src="{{ url_for('static', filename='chat/js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='chat/js/popper.js') }}"></script>
+<script src="{{ url_for('static', filename='chat/js/bootstrap.js') }}"></script>
+<script src="{{ url_for('static', filename='chat/js/axios.js') }}"></script>
+<script src="{{ url_for('static', filename='chat/js/app.js') }}"></script>
 <script>
     new WOW().init();
 </script>
