@@ -22,6 +22,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(60), nullable=False, unique=True)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60))
+    about_me = db.Column(db.String(140))
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     followed = db.relationship('User', secondary=followers, primaryjoin=(followers.c.follower_id == id),
                                secondaryjoin=(followers.c.followed_id == id),
                                backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
@@ -79,7 +81,7 @@ class User(db.Model, UserMixin):
         return self.id
 
     def __repr__(self):
-        return f"User('{self.username}','{self.name}','{self.image_file}','{self.password}')"
+        return f"User('{self.username}','{self.name}','{self.image_file}','{self.password}','{self.last_seen}')"
 
 
 class Post(db.Model):

@@ -1,14 +1,20 @@
-from flask import Flask, Blueprint
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 from flask_bcrypt import Bcrypt
+from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
-from flask_marshmallow import Marshmallow
-from flaskface.config import BaseConfig
 from flask_mail import Mail
+from flask_marshmallow import Marshmallow
+from flask_moment import Moment
+from flask_sqlalchemy import SQLAlchemy
 from pusher import Pusher
 
+from flaskface.config import BaseConfig
+
 app = Flask(__name__, template_folder='template')
+
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+
+
 pusher_client = Pusher(
     app_id='771243',
     key='ca7c12f18787cfa7312a',
@@ -28,6 +34,8 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 bcrypt = Bcrypt(app)
 mail = Mail(app)
+moment = Moment(app)
+bootstrap = Bootstrap(app)
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'user.login'

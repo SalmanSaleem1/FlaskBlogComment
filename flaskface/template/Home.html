@@ -1,5 +1,5 @@
 {% extends 'Layout.html' %}
-{% block content %}
+{% block app_content %}
     {% for post in posts.items %}
         <article class="media jumbotron hoverable p-4 mx-3 mb-5">
             <a href="{{ url_for('static', filename='profile_pic/' + post.author.image_file) }}" target="_blank">
