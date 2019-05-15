@@ -7,7 +7,6 @@ from flask_marshmallow import Marshmallow
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from pusher import Pusher
-from flask_babel import Babel
 
 from flaskface.config import BaseConfig
 
@@ -37,7 +36,6 @@ bcrypt = Bcrypt(app)
 mail = Mail(app)
 moment = Moment(app)
 bootstrap = Bootstrap(app)
-babel = Babel(app)
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'user.login'
