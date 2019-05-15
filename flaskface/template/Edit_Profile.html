@@ -1,6 +1,6 @@
 {% extends 'Layout.html' %}
 
-{% block content %}
+{% block app_content %}
 
     <div class="content-section">
         <form action="" method="post" enctype="multipart/form-data">
@@ -19,7 +19,7 @@
                                 <h5 class="text-muted">{{ current_user.email }}</h5>
                             </div>
                         </div>
-                        <div class="md-form" style="width: 500px">
+                        <div class="form-group" style="width: 500px">
                             {% if form.name.errors %}
                                 {{ form.name(class="form-control form-control-lg is-invalid", placeholder="Name") }}
                                 {% for error in form.name.errors %}
@@ -33,7 +33,7 @@
                                 {{ form.name(class="form-control form-control-lg", placeholder="Name") }}
                             {% endif %}
                         </div>
-                        <div class="md-form" style="width: 500px">
+                        <div class="form-group" style="width: 500px">
                             {% if form.username.errors %}
                                 {{ form.username(class="form-control form-control-lg is-invalid", placeholder="User Name") }}
                                 {% for error in form.username.errors %}
@@ -47,7 +47,7 @@
                                 {{ form.username(class="form-control form-control-lg", placeholder="User Name") }}
                             {% endif %}
                         </div>
-                        <div class="md-form" style="width: 500px">
+                        <div class="form-group" style="width: 500px">
                             {% if form.email.errors %}
                                 {{ form.email(class="form-control form-control-lg is-invalid", placeholder="Email") }}
                                 {% for error in form.email.errors %}
@@ -60,22 +60,22 @@
                             {% endif %}
                             {{ form.email(class="form-control form-control-lg", placeholder="Email") }}
                         </div>
-                        <div class="md-form">
+                        <div class="form-group">
                             {{ form.picture(class="btn btn-danger", value="Upload Image") }}
 
                         </div>
-                        <div class="md-form">
+                        <div class="group">
                             <a href="{{ url_for('user.photos', user_id=current_user.id) }}"
                                class="btn blue-gradient waves waves-effect waves-light">Photos</a>
                         </div>
 
                     </fieldset>
 
-                    <div class="md-form">
+                    <div class="form-group">
                         {{ form.update(class="btn aqua-gradient waves waves-effect waves-light") }}
                     </div>
                 </div>
             </div>
         </form>
     </div>
-{% endblock content %}
+{% endblock %}
