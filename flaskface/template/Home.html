@@ -21,7 +21,18 @@
                     <img class="rounded float-left" style="width: 100%; height: 500px;"
                          src="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
                 </a>
+                {% if current_user.has_liked_post(post) %}
+                    <a href="{{ url_for('post.like_action', post_id=post.id, action='unlike') }}">Unlike</a>
+                {% else %}
+                    <a href="{{ url_for('post.like_action', post_id=post.id, action='like') }}">Like</a>
+                {% endif %}
+                {% if post.likes.count() == 1 %}
+                    <span class="green-text">{{ post.likes.count() }} <small class="text-muted">like</small> </span>
+                {% else %}
+                    <span class="green-text"> {{ post.likes.count() }} <small class="text-muted">likes </small> </span>
+                {% endif %}
             </div>
+
         </article>
     {% endfor %}
     {#    Pagination Start from here #}

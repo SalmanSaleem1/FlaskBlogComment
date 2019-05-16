@@ -27,6 +27,7 @@ class User(db.Model, UserMixin):
     followed = db.relationship('User', secondary=followers, primaryjoin=(followers.c.follower_id == id),
                                secondaryjoin=(followers.c.followed_id == id),
                                backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
+    liked = db.relationship('PostLike', foreign_keys='PostLike.user_id', backref='user', lazy='dynamic')
     posts = db.relationship('Post', backref='author', lazy=True)
 
     def get_reset_token(self, expire_time=1800):
@@ -62,9 +63,24 @@ class User(db.Model, UserMixin):
             followers.c.followed_id == user.id).count() > 0
 
     def followed_posts(self):
-        followed = Post.query.join(followers, (followers.c.followed_id == Post.user_id)).filter(followers.c.follower_id == self.id)
+        followed = Post.query.join(followers, (followers.c.followed_id == Post.user_id)).filter(
+            followers.c.follower_id == self.id)
         own = Post.query.filter_by(user_id=self.id)
         return followed.union(own).order_by(Post.create_at.desc())
+
+    def post_like(self, post):
+        if not self.has_liked_post(post):
+            like = PostLike(user_id=self.id, post_id=post.id)
+            db.session.add(like)
+
+    def unlike_post(self, post):
+        if self.has_liked_post(post):
+            PostLike.query.filter_by(user_id=self.id, post_id=post.id).delete()
+
+    def has_liked_post(self, post):
+        return PostLike.query.filter(
+            PostLike.user_id == self.id,
+            PostLike.post_id == post.id).count() > 0
 
     def is_authenticated(self):
         return True
@@ -89,6 +105,7 @@ class Post(db.Model):
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     create_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    likes = db.relationship('PostLike', backref='post', lazy='dynamic')
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.create_at}', '{self.user_id}', '{self.image_file}')"
@@ -109,6 +126,13 @@ class Comment(db.Model):
 
     def __repr__(self):
         return f"Comment('{self.body}', '{self.timestamp}', '{self.post_id}', '{self.user_id}')"
+
+
+class PostLike(db.Model):
+    __tablename__ = 'post_like'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
 
 
 class UserSchema(ma.ModelSchema):
