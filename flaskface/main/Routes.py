@@ -13,6 +13,7 @@ def home():
     page = request.args.get('page', 1, type=int)
     # posts = Post.query.order_by(Post.create_at.desc()).paginate(page=page, per_page=5, error_out=False)
     posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)
+    # posts = current_user.followed_posts().all()
     return render_template('Home.html', title='Home', posts=posts)
 
 

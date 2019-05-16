@@ -10,6 +10,7 @@ class BaseConfig(object):
     MAIL_USE_TLS = True
     MAIL_USERNAME = 'idreesrehan234@gmail.com'
     MAIL_PASSWORD = 'salmanmayo321'
+    LANGUAGES = ['en', 'es']
 
 
 class TestConfig(BaseConfig):

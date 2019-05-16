@@ -1,11 +1,11 @@
-from flaskface import db, bcrypt
+from flaskface import db, bcrypt, _
 from flask import render_template, redirect, request, flash, url_for, Blueprint, jsonify, abort
 from flaskface.user.Forms import RegisterForm, LoginForm, AccountForm, RequestResetForm, RequestPasswordForm
 from flaskface.Models import User, UserSchema, Post
 from flask_login import login_user, current_user, logout_user, login_required
 from marshmallow import pprint
 from flaskface.user.Utils import save_picture, send_reset_email
-from flaskface.constant.app_constant import Constants
+from flaskface.constant.app_constant import constants
 
 user = Blueprint('user', __name__)
 
@@ -16,7 +16,7 @@ def registers():
         return redirect(url_for('main.home'))
     form = RegisterForm()
     if form.validate_on_submit():
-        # hashed_password = bcrypt.generate_password_hash(form.password.data)
+        hashed_password = bcrypt.generate_password_hash(form.password.data)
         user = User(name=form.name.data, username=form.username.data, email=form.email.data,
                     password=form.password.data)
         # user = User(name=form.name.data, username=form.name.data, email=form.email.data,
@@ -26,7 +26,7 @@ def registers():
         pprint(result.data)
         db.session.add(user)
         db.session.commit()
-        flash('Register Successfully', 'success')
+        flash(_(f'{constants.REGISTER_SUCCESS}'), 'success')
         return redirect(url_for('user.login'))
 
     return render_template('Register.html', title='Register', form=form)
@@ -45,19 +45,16 @@ def login():
         return redirect(url_for('main.home'))
     form = LoginForm()
     if form.validate_on_submit():
-        # if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user)
             schema = UserSchema()
             result = schema.dump(user)
             pprint(result.data)
-            flash('Login Successfully', 'success')
+            flash(_(f'{constants.LOGIN_SUCCESS}'), 'success')
             return redirect(url_for('main.home'))
         else:
-            flash(Constants.INVALID_EMAIL_PASSWORD, 'danger')
+            flash(constants.INVALID_EMAIL_PASSWORD, 'danger')
     return render_template('LoginForm.html', form=form, title='Login')
 
 
@@ -71,7 +68,6 @@ def logout():
 @login_required
 def account(username):
     user = User.query.filter_by(username=username).first_or_404()
-
     return render_template('Account.html', user=user)
 
 
@@ -99,14 +95,15 @@ def edit_profile():
 def follow(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
-        flash(f"User {username} not Found")
+        flash(_(f"User {user} not found"), 'info')
+
         return redirect(url_for('index'))
     if user == current_user:
-        flash(f"You can not follow yourself", "warning")
+        flash(_(f"{constants.YOU_CAN_NOT_FOLLOW_YOURSELF}"), "warning")
         return redirect(url_for('account', username=username))
     current_user.follow(user)
     db.session.commit()
-    flash(f'You are following {username}', "success")
+    flash(_(f'{constants.YOU_ARE_FOLLOWING} {username}'), "success")
     return redirect(url_for('user.account', username=username))
 
 
@@ -118,11 +115,11 @@ def unfollow(username):
         flash(f'User {username} not found.')
         return redirect(url_for('index'))
     if user == current_user:
-        flash(f'You cannot unfollow yourself!', 'warning')
+        flash(_(f'{constants.YOU_CAN_NOT_FOLLOW_YOURSELF}'), 'warning')
         return redirect(url_for('user', username=username))
     current_user.unfollow(user)
     db.session.commit()
-    flash(f'You are not following {username}.', 'info')
+    flash(_(f'You are unfollowing {username}'), 'warning')
     return redirect(url_for('user.account', username=username))
 
 
@@ -153,13 +150,13 @@ def reset_token(token):
         return redirect(url_for('main.home'))
     user = User.verify_reset_token(token)
     if user is None:
-        flash(Constants.INVALID_TOKEN, 'warning')
+        flash(constants.INVALID_TOKEN, 'warning')
         return redirect(url_for('user.reset_request'))
     form = RequestPasswordForm()
     if form.validate_on_submit():
         user.password = form.password.data
         db.session.commit()
-        flash(Constants.UPDATE_PASSWORD, 'success')
+        flash(constants.UPDATE_PASSWORD, 'success')
         return redirect(url_for('user.login'))
     return render_template('ResetPassword.html', title='Reset Password', form=form)
 

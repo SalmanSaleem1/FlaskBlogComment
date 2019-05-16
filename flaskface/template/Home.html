@@ -13,7 +13,7 @@
                     <small class="text-muted">{{ post.create_at.strftime('%Y-%m-%d') }}</small>
                 </div>
                 <h2><a class="article-title"
-                       href="{{ url_for('post.post_detail', post_id=post.id) }}">{{ post.title }}</a>
+                       href="{{ url_for('post.post_detail', username=post.author.username, post_id=post.id) }}">{{ post.title }}</a>
                 </h2>
                 <p class="article-content">{{ post.content }}</p>
                 <a target="_blank" href="{{ url_for('static', filename='post_pic/' + post.image_file) }}"
