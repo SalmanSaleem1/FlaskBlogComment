@@ -98,7 +98,9 @@ def post_detail(username, post_id):
                 pusher_client.trigger('Blog', 'new_comment', {'data': print(data)})
                 return redirect(url_for("post.post_detail", post_id=post.id))
         else:
+            flash(f'This link is not following by you', 'info')
             return redirect(url_for('main.home'))
+            # return redirect(url_for('main.home'))
     else:
         return redirect(url_for('main.home'))
     return render_template("Post.html", title="Comment Post", form=form, post=post, post_id=post_id,
@@ -118,3 +120,16 @@ def delete_comment(com_id):
     # pprint({'Delete Success': result.data})
     flash(_(f'Delete Successfully'), 'success')
     return redirect(url_for("main.home"))
+
+
+@post.route('/like/<int:post_id>/<action>')
+@login_required
+def like_action(post_id, action):
+    post = Post.query.filter_by(id=post_id).first_or_404()
+    if action == 'like':
+        current_user.post_like(post)
+        db.session.commit()
+    if action == 'unlike':
+        current_user.unlike_post(post)
+        db.session.commit()
+    return redirect(request.referrer)

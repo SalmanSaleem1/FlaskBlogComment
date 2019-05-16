@@ -33,7 +33,7 @@
                      src="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
             </a>
         </div>
-
+ <h1>Like</h1>
         <form method="post" autocomplete="off">
             {{ form.hidden_tag() }}
 
@@ -41,6 +41,7 @@
                 <input type="text" name="myComment" placeholder="Comment" class="form-control from-control-lg">
             </div>
         </form>
+
         <div>
             {% for com in comm %}
                 <div onmouseover="this.style.background='red';"
