@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_bcrypt import Bcrypt
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
@@ -7,6 +7,7 @@ from flask_marshmallow import Marshmallow
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from pusher import Pusher
+from flask_babel import Babel, _, lazy_gettext as _l
 
 from flaskface.config import BaseConfig
 
@@ -36,10 +37,11 @@ bcrypt = Bcrypt(app)
 mail = Mail(app)
 moment = Moment(app)
 bootstrap = Bootstrap(app)
+babel = Babel(app)
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'user.login'
-login_manager.login_message_category = 'info'
+login_manager.login_message_category = _l(f'Please log in to access this page.')
 
 from flaskface.user.Routes import user
 from flaskface.post.Routes import post
@@ -52,3 +54,9 @@ app.register_blueprint(post)
 app.register_blueprint(main)
 app.register_blueprint(errors)
 app.register_blueprint(comment)
+
+
+@babel.localeselector
+def get_local():
+    # return request.accept_languages.best_match(app.config['LANGUAGES'])
+    return 'es'
