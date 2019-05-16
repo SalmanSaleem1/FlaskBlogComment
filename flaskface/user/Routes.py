@@ -16,7 +16,7 @@ def registers():
         return redirect(url_for('main.home'))
     form = RegisterForm()
     if form.validate_on_submit():
-        # hashed_password = bcrypt.generate_password_hash(form.password.data)
+        hashed_password = bcrypt.generate_password_hash(form.password.data)
         user = User(name=form.name.data, username=form.username.data, email=form.email.data,
                     password=form.password.data)
         # user = User(name=form.name.data, username=form.name.data, email=form.email.data,
@@ -45,9 +45,6 @@ def login():
         return redirect(url_for('main.home'))
     form = LoginForm()
     if form.validate_on_submit():
-        # if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user)
@@ -71,7 +68,6 @@ def logout():
 @login_required
 def account(username):
     user = User.query.filter_by(username=username).first_or_404()
-
     return render_template('Account.html', user=user)
 
 

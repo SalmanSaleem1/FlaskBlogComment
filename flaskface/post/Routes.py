@@ -4,7 +4,7 @@ from flaskface.Models import Post, PostSchema, Comment, User
 from flaskface import db, pusher_client, _
 from flask_login import current_user, login_required
 from marshmallow import pprint
-from flaskface.constant.app_constant import constants
+from flaskface.Models import followers
 from flaskface.post.utils import save_picture
 
 post = Blueprint('post', __name__)
@@ -71,35 +71,38 @@ def post_delete(post_id):
     return redirect(url_for('main.home'))
 
 
-@post.route("/post/<int:post_id>", methods=["GET", "POST"])
+@post.route("/post/<string:username>/<int:post_id>", methods=["GET", "POST"])
 @login_required
-def post_detail(post_id):
-    if current_user.is_following:
-        return redirect(url_for('main.home'))
-    else:
-        post = Post.query.get_or_404(post_id)
-        if User.unfollow(post.title, current_user):
+def post_detail(username, post_id):
+    user = User.query.filter_by(username=username).first_or_404()
+    if current_user.is_following(user) or current_user == user:
+        al_posts = Post.query.filter_by(author=user).all()
+        all_posts_ids = [item.id for item in al_posts]
+        if post_id in all_posts_ids or current_user.is_following(user):
+            post = Post.query.get_or_404(post_id)
+            comm = Comment.query.filter_by(post_id=post.id)
+            form = AddCommentForm()
+            if form.validate_on_submit() or request.method == 'POST':
+                myComment = request.form['myComment']
+                # myComment = form.body.data
+                post_by_id = post_id
+                user_by_id = current_user.username
+                comment = Comment(body=myComment, post_id=post_by_id, user_id=user_by_id)
+                db.session.add(comment)
+                db.session.commit()
+                data = {
+
+                    "myComment": myComment,
+
+                }
+                pusher_client.trigger('Blog', 'new_comment', {'data': print(data)})
+                return redirect(url_for("post.post_detail", post_id=post.id))
+        else:
             return redirect(url_for('main.home'))
-        # post = current_user.followed_posts().all()
-        comm = Comment.query.filter_by(post_id=post.id)
-        form = AddCommentForm()
-        if form.validate_on_submit() or request.method == 'POST':
-            myComment = request.form['myComment']
-            # myComment = form.body.data
-            post_by_id = post_id
-            user_by_id = current_user.username
-            comment = Comment(body=myComment, post_id=post_by_id, user_id=user_by_id)
-            db.session.add(comment)
-            db.session.commit()
-            data = {
-
-                "myComment": myComment,
-
-            }
-            pusher_client.trigger('Blog', 'new_comment', {'data': print(data)})
-            return redirect(url_for("post.post_detail", post_id=post.id))
+    else:
+        return redirect(url_for('main.home'))
     return render_template("Post.html", title="Comment Post", form=form, post=post, post_id=post_id,
-                           comm=comm)
+                           comm=comm, user=user)
 
 
 @post.route("/comment/<int:com_id>", methods=["GET", "POST"])
