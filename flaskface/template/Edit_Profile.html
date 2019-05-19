@@ -2,9 +2,9 @@
 
 {% block app_content %}
 
-    <div class="content-section">
+    <div class="content-section" id="memberSection">
         <form action="" method="post" enctype="multipart/form-data">
-            <div class="card wow fadeInRight" data-wow-delay="0.3s">
+            <div class="card">
                 <div class="card-body">
                     <fieldset>
                         {{ form.hidden_tag() }}
@@ -21,7 +21,7 @@
                         </div>
                         <div class="form-group" style="width: 500px">
                             {% if form.name.errors %}
-                                {{ form.name(class="form-control form-control-lg is-invalid", placeholder="Name") }}
+                                {{ form.name(class="form-control form-control-lg is-invalid", placeholder="Name", id="nameInput") }}
                                 {% for error in form.name.errors %}
                                     <div class="alert-message block-message error">
                             <span class="badge badge-danger">
@@ -30,12 +30,12 @@
                                     </div>
                                 {% endfor %}
                             {% else %}
-                                {{ form.name(class="form-control form-control-lg", placeholder="Name") }}
+                                {{ form.name(class="form-control form-control-lg", placeholder="Name", id="nameInput") }}
                             {% endif %}
                         </div>
                         <div class="form-group" style="width: 500px">
                             {% if form.username.errors %}
-                                {{ form.username(class="form-control form-control-lg is-invalid", placeholder="User Name") }}
+                                {{ form.username(class="form-control form-control-lg is-invalid", placeholder="User Name", id="userInput") }}
                                 {% for error in form.username.errors %}
                                     <div class="alert-message block-message error">
                             <span class="badge badge-danger">
@@ -44,12 +44,12 @@
                                     </div>
                                 {% endfor %}
                             {% else %}
-                                {{ form.username(class="form-control form-control-lg", placeholder="User Name") }}
+                                {{ form.username(class="form-control form-control-lg", placeholder="User Name", id="userInput") }}
                             {% endif %}
                         </div>
                         <div class="form-group" style="width: 500px">
                             {% if form.email.errors %}
-                                {{ form.email(class="form-control form-control-lg is-invalid", placeholder="Email") }}
+                                {{ form.email(class="form-control form-control-lg is-invalid", placeholder="Email", id="emailInput") }}
                                 {% for error in form.email.errors %}
                                     <div class="alert-message block-message error">
                             <span class="badge badge-danger">
@@ -58,10 +58,10 @@
                                     </div>
                                 {% endfor %}
                             {% endif %}
-                            {{ form.email(class="form-control form-control-lg", placeholder="Email") }}
+                            {{ form.email(class="form-control form-control-lg", placeholder="Email", id="emailInput") }}
                         </div>
                         <div class="form-group">
-                            {{ form.picture(class="btn btn-danger", value="Upload Image") }}
+                            {{ form.picture(class="btn btn-danger", value="Upload Image", id="imageInput") }}
 
                         </div>
                         <div class="group">
@@ -70,12 +70,29 @@
                         </div>
 
                     </fieldset>
-
                     <div class="form-group">
-                        {{ form.update(class="btn aqua-gradient waves waves-effect waves-light") }}
+                        {{ form.update(class="btn aqua-gradient waves waves-effect waves-light", id="updateBtn") }}
                     </div>
                 </div>
             </div>
         </form>
     </div>
 {% endblock %}
+
+<script>
+    $(document).ready(function () {
+        $('#updateBtn').on('click', function () {
+            var id = $(this).attr('id');
+            var name = $('#nameInput' + id).val();
+            var username = $('#userInput'+ id).val();
+            var  email = $('#emailInput' +id).val();
+
+            req = $.ajax({
+                url:'/account',
+                type:'POST',
+                data : {name:name, username:username, email:email, id:id}
+            })
+            $('#memberSection' +id).fadeOut(1000).fadeIn(1000)
+        })
+    })
+</script>

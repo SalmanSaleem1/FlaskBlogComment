@@ -1,7 +1,6 @@
 {% extends 'Layout.html' %}
 {% block app_content %}
 
-
 {% if  user == current_user %}
 <article class="media content-section">
     <img class="rounded-circle account-img"
@@ -15,8 +14,6 @@
             <small class="article-title">{{ post.create_at.strftime('%Y-%m-%d') }}</small>
             {% endset %}
             {{ _('%(username)s said %(when)s', username=user_link, when=moment(post.create_at).fromNow()) }}
-
-
         </div>
         {% if post.author== current_user %}
             <a class="btn btn-warning btn-rounded waves-effect waves-light"
@@ -33,15 +30,15 @@
                      src="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
             </a>
         </div>
- <h1>Like</h1>
+        <h1>Like</h1>
         <form method="post" autocomplete="off">
             {{ form.hidden_tag() }}
 
             <div class="form-group">
-                <input type="text" name="myComment" placeholder="Comment" class="form-control from-control-lg">
+                <input type="text" name="myComment" placeholder="Comment" id="comment"
+                       class="form-control from-control-lg">
             </div>
         </form>
-
         <div>
             {% for com in comm %}
                 <div onmouseover="this.style.background='red';"
@@ -76,10 +73,8 @@
             <small class="article-title">{{ post.create_at.strftime('%Y-%m-%d') }}</small>
             {% endset %}
             {{ _('%(username)s said %(when)s', username=user_link, when=moment(post.create_at).fromNow()) }}
-
-
         </div>
-        {% if post.author== current_user %}
+        {% if post.author == current_user %}
             <a class="btn btn-warning btn-rounded waves-effect waves-light"
                href="{{ url_for('post.post_update', post_id=post.id) }}">Update</a>
             <a class="btn btn-danger btn-rounded waves-effect waves-light mr-2" data-toggle="modal"
@@ -87,7 +82,6 @@
         {% endif %}
         <h2><a class="article-title">{{ post.title }}</a></h2>
         <p class="article-content">{{ post.content }}</p>
-
         <div class="form-group">
             <a href="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
                 <img class="rounded float-left" style="width: 30%; height: 30%;"
@@ -114,9 +108,6 @@
                      onmouseout="this.style.background='white';">
                     <hr>
                     <h5>{{ com.body }}</h5>
-                    {#                            <a class="btn btn-primary"#}
-                    {#                               href="{{ url_for('post.delete_comment', com_id=com.id) }}">Delete</a>#}
-                    <!--                    <button type="button" class="btn btn-danger">Delete</button>-->
                     <hr>
                 </div>
             {% endfor %}
@@ -181,3 +172,9 @@
 </div>
 
 {% endblock %}
+
+<script>
+    function myFunction() {
+        document.getElementById("demo").innerHTML = "Hello World";
+    }
+</script>

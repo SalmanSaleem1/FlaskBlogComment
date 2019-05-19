@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Material Design Bootstrap Template</title>
+    <title>Login</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <!-- Bootstrap core CSS -->
@@ -74,7 +74,9 @@
 <!-- Main navigation -->
 <body>
 {% include 'include/_TransParentNavBar.html' %}
+
 <header>
+
     <div class="view"
          style="background-image: url('http://mdbootstrap.com/img/Photos/Others/images/91.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
         <!-- Mask & flexbox options-->
@@ -82,8 +84,21 @@
             <!-- Content -->
             <div class="container">
                 <!--Grid row-->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    <!--     Categories: success (green), info (blue), warning (yellow), danger (red)-->
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible" role="alert" style="color: white">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <!-- <strong>Title</strong> --> {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 <div class="row mt-5">
                     <!--Grid column-->
+
                     <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text text-center text-md-left">
                         <h1 class="h1-responsive font-weight-bold wow fadeInLeft" style="color: white"
                             data-wow-delay="0.3s">Sign up right
@@ -91,12 +106,9 @@
                         <hr class="hr-light" data-wow-delay="0.3s">
                     </div>
                     <!--Grid column-->
-                    <!--Grid column-->
                     <div class="col-md-6 col-xl-5 mb-4">
                         <form action="" method="post">
                             {{ form.hidden_tag() }}
-
-
                             <div class="card wow fadeInRight" data-wow-delay="0.3s">
                                 <div class="card-body">
                                     <fieldset>

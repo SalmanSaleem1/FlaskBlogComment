@@ -15,7 +15,6 @@ app = Flask(__name__, template_folder='template')
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 
-
 pusher_client = Pusher(
     app_id='771243',
     key='ca7c12f18787cfa7312a',
@@ -54,9 +53,3 @@ app.register_blueprint(post)
 app.register_blueprint(main)
 app.register_blueprint(errors)
 app.register_blueprint(comment)
-
-
-@babel.localeselector
-def get_local():
-    # return request.accept_languages.best_match(app.config['LANGUAGES'])
-    return 'es'
