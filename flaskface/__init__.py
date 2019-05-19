@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask
 from flask_bcrypt import Bcrypt
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
@@ -8,6 +8,7 @@ from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from pusher import Pusher
 from flask_babel import Babel, _, lazy_gettext as _l
+
 
 from flaskface.config import BaseConfig
 
