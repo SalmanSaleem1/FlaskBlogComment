@@ -1,10 +1,9 @@
-from flask import Blueprint, render_template, redirect, url_for, abort, flash, request
+from flask import Blueprint, render_template, redirect, url_for, abort, flash, request, jsonify
 from flaskface.post.Forms import NewPostForm, AddCommentForm
 from flaskface.Models import Post, PostSchema, Comment, User
-from flaskface import db, pusher_client, _
+from flaskface import db, _
 from flask_login import current_user, login_required
 from marshmallow import pprint
-from flaskface.Models import followers
 from flaskface.post.utils import save_picture
 
 post = Blueprint('post', __name__)
@@ -95,7 +94,7 @@ def post_detail(username, post_id):
                     "myComment": myComment,
 
                 }
-                pusher_client.trigger('Blog', 'new_comment', {'data': print(data)})
+                # pusher_client.trigger('Blog', 'new_comment', {'data': print(data)})
                 return redirect(url_for("post.post_detail", post_id=post.id))
         else:
             flash(f'This link is not following by you', 'info')
@@ -122,9 +121,10 @@ def delete_comment(com_id):
     return redirect(url_for("main.home"))
 
 
-@post.route('/like/<int:post_id>/<action>')
+@post.route('/like/<int:post_id>/<action>', methods=["GET", "POST"])
 @login_required
 def like_action(post_id, action):
+    print('is salman here')
     post = Post.query.filter_by(id=post_id).first_or_404()
     if action == 'like':
         current_user.post_like(post)
@@ -132,4 +132,19 @@ def like_action(post_id, action):
     if action == 'unlike':
         current_user.unlike_post(post)
         db.session.commit()
-    return redirect(request.referrer)
+    return jsonify({"likes_count": post.likes.count()})
+
+
+@post.route('/check')
+def check():
+    return render_template('testAjax.html')
+
+
+@post.route('/process', methods=["GET", "POST"])
+def process():
+    name = request.form['name']
+    email = request.form['email']
+    if name and email:
+        new_name = name[::-1]
+        return jsonify({'name': new_name})
+    return jsonify({'error': 'Missing Data'})

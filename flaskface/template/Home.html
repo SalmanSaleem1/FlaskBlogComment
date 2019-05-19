@@ -1,7 +1,8 @@
 {% extends 'Layout.html' %}
+
 {% block app_content %}
     {% for post in posts.items %}
-        <article class="media jumbotron hoverable p-4 mx-3 mb-5">
+        <article class="media jumbotron hoverable p-4 mx-3 mb-5" id="forFade">
             <a href="{{ url_for('static', filename='profile_pic/' + post.author.image_file) }}" target="_blank">
                 <img class="rounded-circle account-img"
                      src="{{ url_for('static', filename='profile_pic/' + post.author.image_file) }}">
@@ -21,16 +22,50 @@
                     <img class="rounded float-left" style="width: 100%; height: 500px;"
                          src="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
                 </a>
-                {% if current_user.has_liked_post(post) %}
-                    <a href="{{ url_for('post.like_action', post_id=post.id, action='unlike') }}">Unlike</a>
-                {% else %}
-                    <a href="{{ url_for('post.like_action', post_id=post.id, action='like') }}">Like</a>
-                {% endif %}
-                {% if post.likes.count() == 1 %}
-                    <span class="green-text">{{ post.likes.count() }} <small class="text-muted">like</small> </span>
-                {% else %}
-                    <span class="green-text"> {{ post.likes.count() }} <small class="text-muted">likes </small> </span>
-                {% endif %}
+                <form method="post">
+                    {% if current_user.has_liked_post(post) %}
+                        <a data-path="{{ url_for('post.like_action', post_id=post.id, action='unlike') }}"
+                           class="like-button" href="_#"
+                        ><i class="fas fa-thumbs-up"></i></a>
+                    {% else %}
+                        <a class="like-button"
+                           href="_#"
+                           data-path="{{ url_for('post.like_action', post_id=post.id, action='like') }}"
+                        ><i class="far fa-thumbs-up"></i></a>
+                    {% endif %}
+
+
+                    {% if post.likes.count() == 1 %}
+                        <span class="green-text">{{ post.likes.count() }} </span>
+                        <small class="text-muted">like</small>
+                    {% else %}
+                        <span class="green-text"> {{ post.likes.count() }} </span>
+                        <small class="text-muted">likes</small>
+                    {% endif %}
+                </form>
+                {#                <form method="post">#}
+                {#                    {% if current_user.has_liked_post(post) %}#}
+                {#                        <a data-count-span="count_{{ post.id }}" data-post-id="{{ post.id }}"#}
+                {#                           data-path="{{ url_for('post.like_action', post_id=post.id, action='unlike') }}"#}
+                {#                           action="unlike"#}
+                {#                           class="like-button" href="_#"#}
+                {#                        ><i class="fas fa-thumbs-up"></i></a>#}
+                {#                    {% else %}#}
+                {#                        <a class="like-button" data-count-span="count_{{ post.id }}" data-post-id="{{ post.id }}"#}
+                {#                           href="_#"#}
+                {#                           data-path="{{ url_for('post.like_action', post_id=post.id, action='like') }}" action="unlike"#}
+                {#                        ><i class="far fa-thumbs-up"></i></a>#}
+                {#                    {% endif %}#}
+                {##}
+                {##}
+                {#                    {% if post.likes.count() == 1 %}#}
+                {#                        <span class="green-text count_{{ post.id }}">{{ post.likes.count() }} </span>#}
+                {#                        <small class="text-muted">like</small>#}
+                {#                    {% else %}#}
+                {#                        <span class="green-text count_{{ post.id }}"> {{ post.likes.count() }} </span>#}
+                {#                        <small class="text-muted">likes</small>#}
+                {#                    {% endif %}#}
+                {#                </form>#}
             </div>
 
         </article>
@@ -48,5 +83,112 @@
             ...
         {% endif %}
     {% endfor %}
+{% endblock %}
 
+{% block scripts %}
+    <script>
+        $(function () {
+            console.log('is here');
+            $(".like-button").click(function (event) {
+                event.preventDefault();
+
+                var but = $(this);
+                var buti = $('i', this);
+                $.ajax({
+                    type: "GET",
+                    url: but.data('path'),
+                    processData: false,
+                    contentType: "application/json",
+                    data: '',
+                    success: function (data) {
+
+                        if (but.attr('action') == 'like') {
+                            but.attr('action', 'unlike')
+                            buti.attr('class', 'fas fa-thumbs-up')
+                        } else {
+                            but.attr('action', 'like')
+                            buti.attr('class', 'far fa-thumbs-up')
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    {#    <script>#}
+    {#        $(function () {#}
+    {#            console.log('is here');#}
+    {#            $(".like-button").click(function (event) {#}
+    {#                event.preventDefault();#}
+    {#alert($(this).data('path'));#}
+    {#$.get()#}
+    {#    .done(function (data) {#}
+    {#        alert("Data Loaded: " + data);#}
+    {##}
+    {#    });#}
+    {#                var but = $(this);#}
+    {#                var postID = $(this).data('post-id');#}
+    {#                var buti = $('i', this);#}
+    {#                $.ajax({#}
+    {#                    type: "GET",#}
+    {#                    url: but.data('path'),#}
+    {#                    processData: false,#}
+    {#                    contentType: "application/json",#}
+    {#                    data: '',#}
+    {#                    success: function (data) {#}
+    {#                        if (but.attr('action') == 'like') {#}
+    {#                            but.attr('action', 'unlike')#}
+    {#but.data('path', 'post/'+postID+'/unlike')#}
+    {#$("."+but.data('count-span')).text(data.likes_count);#}
+    {#                            $.get($(this))#}
+    {#                            buti.attr('class', 'fas fa-thumbs-up')#}
+    {#                        } else {#}
+    {#                            but.attr('action', 'like')#}
+    {#but.data('path', 'post/'+postID+'/like')#}
+    {#$("."+but.data('count-span')).text(data.likes_count);#}
+    {##}
+    {#                            buti.attr('class', 'far fa-thumbs-up')#}
+    {#                        }#}
+    {#                    }#}
+    {#                });#}
+    {#            });#}
+    {##}
+    {#        });#}
+    {#    </script>#}
+    {#    <script>#}
+    {#        $('.like-button').each(function () {#}
+    {#            if ($(this).data('path')) {#}
+    {#                $(this).css('color', '#440e96');#}
+    {#                $('i', this).attr('class', 'fas fa-thumbs-up')#}
+    {#            } else {#}
+    {#                $(this).css('color', '#333');#}
+    {#                $('i', this).attr('class', 'far fa-thumbs-up')#}
+    {#            }#}
+    {#            $(this).off('click');#}
+    {#            $(this).click(function () {#}
+    {#                var but = $(this);#}
+    {#                var buti = $('i', this);#}
+    {#                $.ajax({#}
+    {#                    type: "GET",#}
+    {#                    url: $(this).data('path'),#}
+    {#                    processData: false,#}
+    {#                    contentType: "application/json",#}
+    {#                    data: '',#}
+    {#                    success: function (r) {#}
+    {#                        if (JSON.parse(r).Status == 'success') {#}
+    {#                            if (but.data('liked') == false) {#}
+    {#                                but.data('liked', true)#}
+    {#                                but.css('color', '#440e96')#}
+    {#                                buti.attr('class', 'fas fa-thumbs-up')#}
+    {#                            } else {#}
+    {#                                but.data('liked', false)#}
+    {#                                but.css('color', '#333')#}
+    {#                                buti.attr('class', 'far fa-thumbs-up')#}
+    {#                            }#}
+    {#                        }#}
+    {#                    },#}
+    {#                    error: function (r) {#}
+    {#                    }#}
+    {#                })#}
+    {#            })#}
+    {#    </script>#}
 {% endblock %}
