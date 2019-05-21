@@ -1,7 +1,8 @@
 from flaskface import db, bcrypt, _
 from flask import render_template, redirect, request, flash, url_for, Blueprint, jsonify, abort
-from flaskface.user.Forms import RegisterForm, LoginForm, AccountForm, RequestResetForm, RequestPasswordForm
-from flaskface.Models import User, UserSchema, Post
+from flaskface.user.Forms import RegisterForm, LoginForm, AccountForm, RequestResetForm, RequestPasswordForm, \
+    MessageForm
+from flaskface.Models import User, UserSchema, Post, Message
 from flask_login import login_user, current_user, logout_user, login_required
 from marshmallow import pprint
 from flaskface.user.Utils import save_picture, send_reset_email
@@ -67,15 +68,16 @@ def logout():
 @user.route('/user/<string:username>', methods=['POST', 'GET'])
 @login_required
 def account(username):
+    print('salman here')
     user = User.query.filter_by(username=username).first_or_404()
     return render_template('Account.html', user=user, title=user.username)
 
 
-@user.route('/user/<string:username>/popup')
+@user.route('/user/<username>/popup')
 @login_required
 def user_popup(username):
     user = User.query.filter_by(username=username).first_or_404()
-    return render_template('UserPopUp.html', user=user, title=user.username)
+    return render_template('UserPopUp.html', user=user)
 
 
 @user.route('/account', methods=['POST', 'GET'])
@@ -172,3 +174,21 @@ def reset_token(token):
 def photos(user_id):
     user_pics = Post.query.filter_by(user_id=current_user.id)
     return render_template('Photos.html', user_pics=user_pics)
+
+
+@user.route('/send_message/<recipient>', methods=['POST', 'GET'])
+@login_required
+def send_message(recipient):
+    user = User.query.filter_by(username=recipient).first_or_404()
+    form = MessageForm()
+    if form.validate_on_submit():
+
+        msg = Message(author=current_user, recipient=user,
+                      body=form.message.data)
+        db.session.add(msg)
+        db.session.commit()
+        flash(_('Your message has been sent.'), 'info')
+        return redirect(url_for('user.account', username=recipient))
+
+    return render_template('Send_Message.html', title=_('Send Message'),
+                           form=form, recipient=recipient)

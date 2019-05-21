@@ -58,12 +58,13 @@
                 var xhr = null;
                 $('.user_group').hover(
                     function (event) {
-
+                        console.log('move in');
                         // mouse in event handler
                         var elem = $(event.currentTarget);
                         timer = setTimeout(function () {
                             timer = null;
                             xhr = $.ajax(
+
                                 '/user/' + elem.first().text().trim() + '/popup').done(
                                 function (data) {
                                     xhr = null;
@@ -81,20 +82,27 @@
                     },
                     function (event) {
                         // mouse out event handler
-
+                        console.log('Move out one')
                         var elem = $(event.currentTarget);
                         if (timer) {
+                            console.log('Move out two');
                             clearTimeout(timer);
                             timer = null;
                         } else if (xhr) {
+                            console.log('Move out three')
                             xhr.abort();
                             xhr = null;
                         } else {
+                            console.log('Move out four')
                             elem.popover('hide');
                         }
                     }
                 );
             });
+            function set_message_count(n) {
+                $('#message_count').text(n)
+                $('#message_count').css('visibility', n ? 'visible' : 'hidden');
+            }
         </script>
     {% endblock %}
     <!-- Tooltips -->
@@ -103,6 +111,7 @@
 
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="{{ url_for('static',filename = 'js/mdb.min.js') }}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
 
 
 

@@ -4,7 +4,7 @@ class BaseConfig(object):
     DEBUG = False
     SECRET_KEY = '123456789987456321'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///blog.db'
-    POSTS_PER_PAGE = 25
+    POSTS_PER_PAGE = 3
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True

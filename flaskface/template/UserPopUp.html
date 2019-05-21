@@ -1,7 +1,7 @@
 <table class="table">
     <tr>
         <td width="64" style="border: 0px;"><img class="rounded-circle account-img"
-                src="{{ url_for('static', filename='profile_pic/' + user.image_file) }}"></td>
+                src="{{ url_for('static', filename='profile_pic/' + current_user.image_file) }}"></td>
         <td style="border: 0px;">
             <p><a href="{{ url_for('user.account', username=user.username) }}" style="color: cadetblue">{{ user.username }}</a></p>
             <small>
