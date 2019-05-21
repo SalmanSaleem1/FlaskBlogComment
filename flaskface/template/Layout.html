@@ -52,22 +52,59 @@
         {{ super() }}
         {{ moment.include_moment() }}
         {{ moment.lang(g.locale) }}
-    {% endblock %}
+        <script>
+            $(function () {
+                var timer = null;
+                var xhr = null;
+                $('.user_group').hover(
+                    function (event) {
 
-    <script type="text/javascript" src="{{ url_for('static',filename = 'js/jquery-3.4.0.min.js') }}"></script>
+                        // mouse in event handler
+                        var elem = $(event.currentTarget);
+                        timer = setTimeout(function () {
+                            timer = null;
+                            xhr = $.ajax(
+                                '/user/' + elem.first().text().trim() + '/popup').done(
+                                function (data) {
+                                    xhr = null;
+                                    elem.popover({
+                                        trigger: 'manual',
+                                        html: true,
+                                        animation: true,
+                                        container: elem,
+                                        content: data
+                                    }).popover('show');
+                                    flask_moment_render_all();
+                                }
+                            );
+                        }, 1000);
+                    },
+                    function (event) {
+                        // mouse out event handler
+
+                        var elem = $(event.currentTarget);
+                        if (timer) {
+                            clearTimeout(timer);
+                            timer = null;
+                        } else if (xhr) {
+                            xhr.abort();
+                            xhr = null;
+                        } else {
+                            elem.popover('hide');
+                        }
+                    }
+                );
+            });
+        </script>
+    {% endblock %}
     <!-- Tooltips -->
     <script type="text/javascript" src="{{ url_for('static',filename = 'js/popper.min.js') }}"></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="{{ url_for('static',filename = 'js/bootstrap.min.js') }}"></script>
+
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="{{ url_for('static',filename = 'js/mdb.min.js') }}"></script>
 
-    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
 
-    <script src="{{ url_for('static', filename='chat/js/popper.js') }}"></script>
-    <script src="{{ url_for('static', filename='chat/js/bootstrap.js') }}"></script>
-    <script src="{{ url_for('static', filename='chat/js/axios.js') }}"></script>
-    <script>
-        new WOW().init();
-    </script>
+
 {% endblock %}
+

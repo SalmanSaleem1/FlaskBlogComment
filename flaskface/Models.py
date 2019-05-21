@@ -106,6 +106,7 @@ class Post(db.Model):
     create_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     likes = db.relationship('PostLike', backref='post', lazy='dynamic')
+    my_language = db.Column(db.String(5))
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.create_at}', '{self.user_id}', '{self.image_file}')"

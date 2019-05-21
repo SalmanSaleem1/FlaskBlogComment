@@ -5,6 +5,7 @@ from flaskface import db, _
 from flask_login import current_user, login_required
 from marshmallow import pprint
 from flaskface.post.utils import save_picture
+from guess_language import guess_language
 
 post = Blueprint('post', __name__)
 
@@ -14,10 +15,13 @@ post = Blueprint('post', __name__)
 def new_post():
     form = NewPostForm()
     if form.validate_on_submit():
+        language = guess_language(form.content.data)
+        if language == 'UNKNOWN' or len(language) > 5:
+            language = ''
         if form.image_file.data:
             picture_file = save_picture(form.image_file.data)
         post = Post(title=form.title.data, content=form.content.data, image_file=picture_file,
-                    author=current_user)
+                    author=current_user, my_language=language)
         db.session.add(post)
         db.session.commit()
         sechma = PostSchema()
