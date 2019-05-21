@@ -6,7 +6,6 @@ from flask_mail import Mail
 from flask_marshmallow import Marshmallow
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
-from pusher import Pusher
 from flask_babel import Babel, _, lazy_gettext as _l
 from flask_migrate import Migrate
 
@@ -14,7 +13,7 @@ from flaskface.config import BaseConfig
 
 app = Flask(__name__, template_folder='template')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 
 app.config.from_object(BaseConfig)
 db = SQLAlchemy(app)

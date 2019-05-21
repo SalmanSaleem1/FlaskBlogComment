@@ -6,14 +6,14 @@
     <tr valign="top">
         <td><img class="account-img" src="{{ url_for('static', filename='profile_pic/' + user.image_file) }}"></td>
         <td>
-        <div class="article-metadata">
+            <div class="article-metadata">
 
             <span class="user_group">
             <a class="article-title"
-            style="color: cadetblue">{{ user.username }}</a>
+               style="color: cadetblue">{{ user.username }}</a>
             </span>
 
-        </div>
+            </div>
             {% set user_link %}
             <span class="user_group">
                 <h1><a href="" style="color: cadetblue">{{ user.username }}</a></h1>
@@ -31,6 +31,11 @@
                 <p><a href="{{ url_for('user.follow', username=user.username) }}">Follow</a></p>
             {% else %}
                 <p><a href="{{ url_for('user.unfollow', username=user.username) }}">Unfollow</a></p>
+            {% endif %}
+            {% if user != current_user %}
+                <p>
+                    <a href="{{ url_for('user.send_message', recipient=user.username) }}">{{ _('Send private message') }}</a>
+                </p>
             {% endif %}
         </td>
     </tr>
