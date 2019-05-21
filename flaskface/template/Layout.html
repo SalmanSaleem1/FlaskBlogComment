@@ -58,7 +58,6 @@
                 var xhr = null;
                 $('.user_group').hover(
                     function (event) {
-                        console.log('move in');
                         // mouse in event handler
                         var elem = $(event.currentTarget);
                         timer = setTimeout(function () {
@@ -82,27 +81,24 @@
                     },
                     function (event) {
                         // mouse out event handler
-                        console.log('Move out one')
                         var elem = $(event.currentTarget);
                         if (timer) {
-                            console.log('Move out two');
                             clearTimeout(timer);
                             timer = null;
                         } else if (xhr) {
-                            console.log('Move out three')
                             xhr.abort();
                             xhr = null;
                         } else {
-                            console.log('Move out four')
                             elem.popover('hide');
                         }
                     }
                 );
             });
             function set_message_count(n) {
-                $('#message_count').text(n)
+                $('#message_count').text(n);
                 $('#message_count').css('visibility', n ? 'visible' : 'hidden');
             }
+
         </script>
     {% endblock %}
     <!-- Tooltips -->
