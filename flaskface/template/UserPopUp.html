@@ -1,0 +1,29 @@
+<table class="table">
+    <tr>
+        <td width="64" style="border: 0px;"><img class="rounded-circle account-img"
+                src="{{ url_for('static', filename='profile_pic/' + user.image_file) }}"></td>
+        <td style="border: 0px;">
+            <p><a href="{{ url_for('user.account', username=user.username) }}" style="color: cadetblue">{{ user.username }}</a></p>
+            <small>
+                {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+                {% if user.last_seen %}
+                    <p>{{ _('Last seen on') }}: {{ moment(user.last_seen).format('lll') }}</p>
+                {% endif %}
+                <p>{{ _('%(count)d followers', count=user.followers.count()) }}, {{ _('%(count)d following', count=user.followed.count()) }}</p>
+                {% if user != current_user %}
+                    {% if not current_user.is_following(user) %}
+                        <a href="{{ url_for('user.follow', username=user.username) }}"
+                        style="color: cadetblue">{{ _('Follow') }}</a>
+                    {% else %}
+                        <a href="{{ url_for('user.unfollow', username=user.username) }}"
+                        style="color: cadetblue">{{ _('Unfollow') }}</a>
+                    {% endif %}
+                {% endif %}
+            {% if user == current_user %}
+                 <p><a href="{{ url_for('user.edit_profile') }}" style="color: cadetblue">Edit your profile</a></p>
+            {% endif %}
+            </small>
+        </td>
+    </tr>
+</table>
+

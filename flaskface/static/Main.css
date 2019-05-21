@@ -122,3 +122,12 @@ body {
         font-size: 18px;
     }
 }
+
+a {
+    text-transform: capitalize;
+
+}
+
+a::first-letter {
+    text-transform: capitalize;
+}

@@ -1,8 +1,10 @@
 from flask import Blueprint, render_template, request
 from flask_login import login_required
-from flaskface.Models import Post
+from flaskface.Models import Post, User
 from flask_login import current_user
 from flaskface import app
+from flaskface.post.Forms import NewPostForm
+from guess_language import guess_language
 
 main = Blueprint('main', __name__)
 
@@ -17,7 +19,7 @@ def home():
     return render_template('Home.html', title='Home', posts=posts)
 
 
-@app.route('/explore')
+@main.route('/explore')
 @login_required
 def explore():
     page = request.args.get('page', 1, type=int)

@@ -9,8 +9,11 @@
     <div class="media-body">
         <div class="article-metadata">
             {% set user_link %}
+            <span class="user_group">
             <a class="article-title"
-               href="{{ url_for('user.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+               href="{{ url_for('user.user_posts', username=post.author.username) }}"
+               style="color: cadetblue">{{ post.author.username }}</a>
+            </span>
             <small class="article-title">{{ post.create_at.strftime('%Y-%m-%d') }}</small>
             {% endset %}
             {{ _('%(username)s said %(when)s', username=user_link, when=moment(post.create_at).fromNow()) }}
@@ -22,8 +25,7 @@
                data-target="#deleteModal" href="">Delete</a>
         {% endif %}
         <h2><a class="article-title">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content }}</p>
-
+        <p class="article-content" id="copyId">{{ post.content }}</p>
         <div class="form-group">
             <a href="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
                 <img class="rounded float-left" style="width: 30%; height: 30%;"
@@ -68,8 +70,11 @@
     <div class="media-body">
         <div class="article-metadata">
             {% set user_link %}
+            <span class="user_group">
             <a class="article-title"
-               href="{{ url_for('user.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+               href="{{ url_for('user.user_posts', username=post.author.username) }}"
+               style="color: cadetblue">{{ post.author.username }}</a>
+            </span>
             <small class="article-title">{{ post.create_at.strftime('%Y-%m-%d') }}</small>
             {% endset %}
             {{ _('%(username)s said %(when)s', username=user_link, when=moment(post.create_at).fromNow()) }}
@@ -81,7 +86,8 @@
                data-target="#deleteModal" href="">Delete</a>
         {% endif %}
         <h2><a class="article-title">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content }}</p>
+        <p class="article-content" id="copyId">{{ post.content }}</p>
+        <button onclick="copyContent()">Copy</button>
         <div class="form-group">
             <a href="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
                 <img class="rounded float-left" style="width: 30%; height: 30%;"
@@ -170,11 +176,15 @@
         </div>
     </div>
 </div>
-
+{% block scripts %}
+    <script>
+        function copyContent() {
+            var copyText = document.getElementById("copyId");
+            copyText.select();
+            document.execCommand("copy");
+            alert("Copied the text: " + copyText.value);
+        }
+    </script>
 {% endblock %}
 
-<script>
-    function myFunction() {
-        document.getElementById("demo").innerHTML = "Hello World";
-    }
-</script>
+{% endblock %}

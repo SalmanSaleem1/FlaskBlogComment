@@ -71,6 +71,13 @@ def account(username):
     return render_template('Account.html', user=user, title=user.username)
 
 
+@user.route('/user/<string:username>/popup')
+@login_required
+def user_popup(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    return render_template('UserPopUp.html', user=user, title=user.username)
+
+
 @user.route('/account', methods=['POST', 'GET'])
 @login_required
 def edit_profile():
