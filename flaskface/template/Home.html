@@ -25,7 +25,6 @@
             >{{ post.title }}</a>
         </h2>
         <p class="article-content" id="copyId">{{ post.content }}</p>
-
         <a target="_blank" href="{{ url_for('static', filename='post_pic/' + post.image_file) }}"
         >
             <img class="rounded float-left" style="width: 100%; height: 500px;"
@@ -35,27 +34,8 @@
             <br><br>
             <a href="#">{{ _('Translate') }}</a>
         {% endif %}
-        <form method="post">
-            {% if current_user.has_liked_post(post) %}
-                <a data-path="{{ url_for('post.like_action', post_id=post.id, action='unlike') }}"
-                   class="like-button" href="_#"
-                ><i class="fas fa-thumbs-up"></i></a>
-            {% else %}
-                <a class="like-button"
-                   href="_#"
-                   data-path="{{ url_for('post.like_action', post_id=post.id, action='like') }}"
-                ><i class="far fa-thumbs-up"></i></a>
-            {% endif %}
 
-
-            {% if post.likes.count() == 1 %}
-                <span class="green-text">{{ post.likes.count() }} </span>
-                <small class="text-muted">like</small>
-            {% else %}
-                <span class="green-text"> {{ post.likes.count() }} </span>
-                <small class="text-muted">likes</small>
-            {% endif %}
-        </form>
+        {% include 'include/_LikeSection.html' %}
 
     </div>
 
@@ -76,37 +56,4 @@
 {% endfor %}
 {% endblock %}
 
-{% block scripts %}
-    {{ super() }}
-    {{ moment.include_moment() }}
-    {{ moment.lang(g.locale) }}
-    <script>
-        $(function () {
-            $(".like-button").click(function (event) {
-                event.preventDefault();
 
-                var but = $(this);
-                var buti = $('i', this);
-                $.ajax({
-                    type: "GET",
-                    url: but.data('path'),
-                    processData: false,
-                    contentType: "application/json",
-                    data: '',
-                    success: function (data) {
-
-                        if (but.attr('action') == 'like') {
-                            but.attr('action', 'unlike')
-                            buti.attr('class', 'fas fa-thumbs-up')
-                        } else {
-                            but.attr('action', 'like')
-                            buti.attr('class', 'far fa-thumbs-up')
-                        }
-                    }
-                });
-            });
-        });
-
-    </script>
-
-{% endblock %}

@@ -99,6 +99,12 @@ class User(db.Model, UserMixin):
         return Message.query.filter_by(recipient=self).filter(
             Message.timestamp > last_read_time).count()
 
+    def add_notification(self, name, data):
+        self.notifications.filter_by(name=name).delete()
+        n = Notifications(name=name, payload_json=json.dumps(data), user=self)
+        db.session.add(n)
+        return n
+
     def is_authenticated(self):
         return True
 
@@ -126,7 +132,7 @@ class Post(db.Model):
     my_language = db.Column(db.String(5))
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.create_at}', '{self.user_id}', '{self.image_file}')"
+        return f"Post('{self.title}', '{self.create_at}', '{self.user_id}', '{self.image_file}', '{self.likes}')"
 
 
 class Comment(db.Model):

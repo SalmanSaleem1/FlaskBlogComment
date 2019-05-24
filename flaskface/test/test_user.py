@@ -4,7 +4,6 @@ from flaskface.Models import User, UserSchema
 from flaskface import bcrypt
 
 
-
 class TestUser(BaseTestCase):
 
     def test_check_password(self):
@@ -13,7 +12,6 @@ class TestUser(BaseTestCase):
         self.assertFalse(bcrypt.check_password_hash(user.password, 'salman'))
 
     def test_user_registeration(self):
-        print('test_user_registeration\n')
         with self.client:
             response = self.client.post('/registers', data=dict(
                 name='TestM', username='testm2', email='testm@gmail.com',

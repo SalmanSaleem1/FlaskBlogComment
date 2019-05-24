@@ -186,8 +186,9 @@ def send_message(recipient):
         msg = Message(author=current_user, recipient=user,
                       body=form.message.data)
         db.session.add(msg)
+        user.add_notification('unread_message_count', user.new_messages())
         db.session.commit()
-        flash(_('Your message has been sent.'), 'info')
+        flash(_(f'{constants.MESSAGE_SEND}'), 'info')
         return redirect(url_for('user.account', username=recipient))
 
     return render_template('Send_Message.html', title=_('Send Message'),

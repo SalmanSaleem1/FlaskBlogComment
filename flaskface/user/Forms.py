@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, ValidationError, TextAreaField, TextField
 from flask_wtf.file import FileAllowed, FileField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 from flaskface.Models import User
@@ -60,3 +60,9 @@ class RequestPasswordForm(FlaskForm):
     password = StringField(_l('Password'), validators=[DataRequired(), Length(min=2, max=25), Email()])
     confirm_password = StringField(_l('Confirm Password'), validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField(_l('Request Reset Password'))
+
+
+class MessageForm(FlaskForm):
+    message = TextAreaField(_l('Message'), validators=[
+        DataRequired(), Length(min=0, max=140), ])
+    submit = SubmitField(_l('Submit'))

@@ -1,0 +1,29 @@
+<form>
+    {% if current_user.has_liked_post(post) %}
+        <a data-count-span="count_{{ post.id }}" data-post-id="{{ post.id }}"
+           data-path="{{ url_for('post.like_action', post_id=post.id, action='unlike') }}"
+           data-post_id="{{ post.id }}"
+           class="like-button" href="#" id="btn_unlike">
+            <i id="{{ post.id }}" class="fas fa-thumbs-up"></i></a>
+    {% else %}
+        <a class="like-button"
+           href="#"
+           data-count-span="count_{{ post.id }}" data-post-id="{{ post.id }}"
+           data-path="{{ url_for('post.like_action', post_id=post.id, action='like') }}"
+           data-post_id="{{ post.id }}" id="btn_like">
+            <i id="{{ post.id }}" class="far fa-thumbs-up"></i></a>
+    {% endif %}
+
+    {#            <span class="green_text count_{{ post.id }}" id="post_count_{{ post.id }}">#}
+    {#                        {{ post.likes.count() }}</span>#}
+    {#            <small class="text-muted">like</small>#}
+    {% if post.likes.count() == 1 %}
+        <span class="green-text count_{{ post.id }}"
+              id="post_count_{{ post.id }}">{{ post.likes.count() }}</span>
+        <small class="text-muted">like</small>
+    {% else %}
+        <span class="green-text count_{{ post.id }}"
+              id="post_count_{{ post.id }}">{{ post.likes.count() }}</span>
+        <small class="text-muted">likes</small>
+    {% endif %}
+</form>
