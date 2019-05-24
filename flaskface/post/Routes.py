@@ -6,6 +6,8 @@ from flask_login import current_user, login_required
 from marshmallow import pprint
 from flaskface.post.utils import save_picture
 from guess_language import guess_language
+from flaskface.constant.app_constant import constants
+import requests
 
 post = Blueprint('post', __name__)
 
@@ -27,7 +29,7 @@ def new_post():
         sechma = PostSchema()
         result = sechma.dump(post)
         pprint(result.data)
-        flash(_(f'Your post is now live!'), 'success')
+        flash(_(f'{constants.YOUR_POST_IS_LIVE_NOW}'), 'success')
         return redirect(url_for('main.home'))
 
     return render_template('NewPost.html', title='New Post', form=form, legend='New Post')
@@ -48,7 +50,7 @@ def post_update(post_id):
         post.content = form.content.data
 
         db.session.commit()
-        flash(f'Update Successfully', 'success')
+        flash(f'{constants.UPDATE_SUCCESS}', 'success')
         return redirect(url_for('main.home'))
     form.title.data = post.title
     form.content.data = post.content
@@ -70,7 +72,7 @@ def post_delete(post_id):
     schema = PostSchema()
     result = schema.dump(post)
     pprint({'Delete Success': result.data})
-    flash(_(f'Delete Successfully'), 'success')
+    flash(_(f'{constants.DELETE_SUCCESS}'), 'success')
     return redirect(url_for('main.home'))
 
 
@@ -101,7 +103,7 @@ def post_detail(username, post_id):
                 # pusher_client.trigger('Blog', 'new_comment', {'data': print(data)})
                 return redirect(url_for("post.post_detail", post_id=post.id))
         else:
-            flash(f'This link is not following by you', 'info')
+            flash(f'{constants.THE_LINK_IS_NOT_FOLLOWING_BY_YOU}', 'info')
             return redirect(url_for('main.home'))
             # return redirect(url_for('main.home'))
     else:
@@ -121,14 +123,13 @@ def delete_comment(com_id):
     db.session.delete(comm)
     db.session.commit()
     # pprint({'Delete Success': result.data})
-    flash(_(f'Delete Successfully'), 'success')
+    flash(_(f'{constants.DELETE_SUCCESS}'), 'success')
     return redirect(url_for("main.home"))
 
 
 @post.route('/like/<int:post_id>/<action>', methods=["GET", "POST"])
 @login_required
 def like_action(post_id, action):
-    print('is salman here')
     post = Post.query.filter_by(id=post_id).first_or_404()
     if action == 'like':
         current_user.post_like(post)
@@ -136,7 +137,8 @@ def like_action(post_id, action):
     if action == 'unlike':
         current_user.unlike_post(post)
         db.session.commit()
-    return jsonify({"likes_count": post.likes.count()})
+
+    return jsonify({"totalCounts": post.likes.count()})
 
 
 @post.route('/check')

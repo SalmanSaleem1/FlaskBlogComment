@@ -12,3 +12,8 @@ class constants(object):
     USER_ALREADY_EXIST = 'This user is already exist please choose another email'
     YOU_CAN_NOT_FOLLOW_YOURSELF = "You can not follow yourself"
     YOU_ARE_FOLLOWING = "You are following"
+    THE_LINK_IS_NOT_FOLLOWING_BY_YOU = "This link is not following by you"
+    YOUR_POST_IS_LIVE_NOW = "Your app is live now"
+    MESSAGE_SEND = "Your message has been sent"
+    POST = 'POST'
+    GET = 'GET'

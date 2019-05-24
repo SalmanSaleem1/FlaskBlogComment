@@ -1,9 +1,11 @@
+from datetime import datetime
+
 from flask import Blueprint, render_template, request, jsonify
 from flask_login import current_user
 from flask_login import login_required
+
 from flaskface import app, db
 from flaskface.Models import Post, Message, Notifications
-from datetime import datetime
 
 main = Blueprint('main', __name__)
 

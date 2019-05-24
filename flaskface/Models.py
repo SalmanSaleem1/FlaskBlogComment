@@ -132,7 +132,7 @@ class Post(db.Model):
     my_language = db.Column(db.String(5))
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.create_at}', '{self.user_id}', '{self.image_file}')"
+        return f"Post('{self.title}', '{self.create_at}', '{self.user_id}', '{self.image_file}', '{self.likes}')"
 
 
 class Comment(db.Model):
