@@ -13,10 +13,6 @@
            data-post_id="{{ post.id }}" id="btn_like">
             <i id="{{ post.id }}" class="far fa-thumbs-up"></i></a>
     {% endif %}
-
-    {#            <span class="green_text count_{{ post.id }}" id="post_count_{{ post.id }}">#}
-    {#                        {{ post.likes.count() }}</span>#}
-    {#            <small class="text-muted">like</small>#}
     {% if post.likes.count() == 1 %}
         <span class="green-text count_{{ post.id }}"
               id="post_count_{{ post.id }}">{{ post.likes.count() }}</span>

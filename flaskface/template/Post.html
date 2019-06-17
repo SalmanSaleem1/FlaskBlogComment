@@ -18,7 +18,7 @@
             {% endset %}
             {{ _('%(username)s said %(when)s', username=user_link, when=moment(post.create_at).fromNow()) }}
         </div>
-        {% if post.author== current_user %}
+        {% if post.author == current_user %}
             <a class="btn btn-warning btn-rounded waves-effect waves-light"
                href="{{ url_for('post.post_update', post_id=post.id) }}">Update</a>
             <a class="btn btn-danger btn-rounded waves-effect waves-light mr-2" data-toggle="modal"
@@ -32,34 +32,8 @@
                      src="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
             </a>
         </div>
-        <h1>Like</h1>
-        <form method="post" autocomplete="off">
-            {{ form.hidden_tag() }}
+            {% include 'include/_CommentSection.html' %}
 
-            <div class="form-group">
-                <input type="text" name="myComment" placeholder="Comment" id="comment"
-                       class="form-control from-control-lg">
-            </div>
-        </form>
-        <div>
-            {% for com in comm %}
-                <div onmouseover="this.style.background='red';"
-                     onmouseout="this.style.background='white';">
-                    <hr>
-                    <a href="">{{ com.user_id }}</a>
-                    <hr>
-                </div>
-                <div id="mydiv" onmouseover="this.style.background='skyblue';"
-                     onmouseout="this.style.background='white';">
-                    <hr>
-                    <h5>{{ com.body }}</h5>
-                    {#                            <a class="btn btn-primary"#}
-                    {#                               href="{{ url_for('post.delete_comment', com_id=com.id) }}">Delete</a>#}
-                    <!--                    <button type="button" class="btn btn-danger">Delete</button>-->
-                    <hr>
-                </div>
-            {% endfor %}
-        </div>
     </div>
 </article>
 {% elif current_user.is_following(user) %}
@@ -94,97 +68,15 @@
                      src="{{ url_for('static', filename='post_pic/' + post.image_file) }}">
             </a>
         </div>
+        {% include 'include/_CommentSection.html' %}
 
-        <form method="post" autocomplete="off">
-            {{ form.hidden_tag() }}
-
-            <div class="form-group">
-                <input type="text" name="myComment" placeholder="Comment" class="form-control from-control-lg">
-            </div>
-        </form>
-        <div>
-            {% for com in comm %}
-                <div onmouseover="this.style.background='red';"
-                     onmouseout="this.style.background='white';">
-                    <hr>
-                    <a href="">{{ com.user_id }}</a>
-                    <hr>
-                </div>
-                <div id="mydiv" onmouseover="this.style.background='skyblue';"
-                     onmouseout="this.style.background='white';">
-                    <hr>
-                    <h5>{{ com.body }}</h5>
-                    <hr>
-                </div>
-            {% endfor %}
-        </div>
     </div>
 </article>
 {% else %}
 <h1>Not showing</h1>
 {% endif %}
-<!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-        <!--Content-->
-        <div class="modal-content text-center">
-            <!--Header-->
-            <div class="modal-header d-flex justify-content-center">
-                <p class="heading">Are you sure want to delete</p>
-            </div>
-            <!--Body-->
-            <div class="modal-body">
-                <i class="fas fa-times fa-4x animated rotateIn"></i>
-            </div>
-            <!--Footer-->
-            <div class="modal-footer flex-center">
-                <a class="btn  btn-outline-danger" href="{{ url_for('post.post_delete', post_id=post.id) }}">Yes</a>
-                <a type="button" class="btn btn-danger waves-effect" data-dismiss="modal">No</a>
-            </div>
-        </div>
-        <!--/.Content-->
-    </div>
-</div>
+<!-- DeleteModal -->
+{% include 'models/deleteModels.html' %}
 <!--ModelDetail-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="" method="post">
-                    <div class="form-group">
-                        <!--                            <label for="recipient-name" class="col-form-label">Recipient:</label>-->
-
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
-            </div>
-        </div>
-    </div>
-</div>
-{% block scripts %}
-    <script>
-        function copyContent() {
-            var copyText = document.getElementById("copyId");
-            copyText.select();
-            document.execCommand("copy");
-            alert("Copied the text: " + copyText.value);
-        }
-    </script>
-{% endblock %}
 
 {% endblock %}

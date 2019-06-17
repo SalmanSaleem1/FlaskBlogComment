@@ -153,7 +153,7 @@ def reset_request():
     return render_template('RequestReset.html', title='Reset Request', form=form)
 
 
-@user.route('/resetpassword/<token>', methods=['POST', 'GET'])
+@user.route('/reset_password/<token>', methods=['POST', 'GET'])
 def reset_token(token):
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
