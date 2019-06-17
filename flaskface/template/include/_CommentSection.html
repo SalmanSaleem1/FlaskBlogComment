@@ -1,0 +1,28 @@
+<form method="post" autocomplete="off">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+        <input type="text" name="myComment" placeholder="Comment" id="comment"
+               class="form-control from-control-lg">
+    </div>
+</form>
+<div>
+    {% for com in comm %}
+        <div onmouseover="this.style.background='red';"
+             onmouseout="this.style.background='white';">
+            <hr>
+            <a href="">{{ com.user_id }}</a>
+            <hr>
+        </div>
+        <div id="mydiv" onmouseover="this.style.background='skyblue';"
+             onmouseout="this.style.background='white';">
+            <hr>
+            <h5>{{ com.body }}</h5>
+            {% if post.author == current_user %}
+                <a class="btn btn-primary"
+                   href="{{ url_for('post.delete_comment', com_id=com.id) }}">Delete</a>
+            {% endif %}
+            <hr>
+        </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,22 @@
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+        <!--Content-->
+        <div class="modal-content text-center">
+            <!--Header-->
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading">Are you sure want to delete</p>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <i class="fas fa-times fa-4x animated rotateIn"></i>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer flex-center">
+                <a class="btn  btn-outline-danger" href="{{ url_for('post.post_delete', post_id=post.id) }}">Yes</a>
+                <a type="button" class="btn btn-danger waves-effect" data-dismiss="modal">No</a>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>

@@ -115,46 +115,42 @@
                     }, 10000);
                 });
             {% endif %}
-        $(function () {
-            $(".like-button").click(function (event) {
-                event.preventDefault();
-                var btn = $(this);
-                var icon_btn = $('i', this);
-                var post_id = "post_count_" + btn.data('post_id');
-                $.ajax({
-                    type: "GET",
-                    url: btn.data('path'),
-                    processData: false,
-                    contentType: "application/json",
-                    data: {},
-                    success: function (data) {
-                        var postId = btn.data('post-id');
-
-                        if ($("#" + postId).attr("class").includes('far')) {
-                            console.log('Second Like')
-                            btn.attr('action', 'like')
-                            $("#" + postId).removeClass('far');
-                            $("#" + postId).addClass('fas');
-                            var span = document.getElementById(post_id)
-                            span.innerText = data.totalCounts;
-                            console.log(span.innerText = data.totalCounts)
-
-                        } else if ($("#" + postId).attr("class").includes('fas')) {
-                            console.log('First Comment');
-                            btn.attr('action', 'unlike')
-                            $("#" + postId).removeClass('fas');
-                            $("#" + postId).addClass('far');
-                            var span = document.getElementById(post_id)
-                            span.innerText = data.totalCounts;
-                            console.log(span.innerText = data.totalCounts)
-                        }
-
-
-                    }
-
+            $(function () {
+                $(".like-button").click(function (event) {
+                    event.preventDefault();
+                    var btn = $(this);
+                    var post_id = "post_count_" + btn.data('post_id');
+                    $.ajax({
+                        type: "GET",
+                        url: btn.data('path'),
+                        processData: false,
+                        contentType: "application/json",
+                        data: {},
+                        success: function (data) {
+                            var postId = btn.data('post-id');
+                            var count = data.totalCounts
+                            if ($("#" + postId).attr("class").includes('far')) {
+                                console.log('first Like')
+                                btn.attr('action', 'like')
+                                $("#" + postId).removeClass('far');
+                                $("#" + postId).addClass('fas');
+                                var span = document.getElementById(post_id)
+                                var myspan = span.innerHTML = count + 1;
+                                myspan
+                                console.log(myspan)
+                            } else if ($("#" + postId).attr("class").includes('fas')) {
+                                console.log('second Like');
+                                btn.attr('action', 'unlike')
+                                $("#" + postId).removeClass('fas');
+                                $("#" + postId).addClass('far');
+                                var span = document.getElementById(post_id)
+                                var myspan = span.innerHTML = count;
+                                console.log(myspan)
+                            }
+                        },
+                    });
                 });
             });
-        });
         </script>
     {% endblock %}
     <!-- Tooltips -->

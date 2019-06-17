@@ -101,7 +101,7 @@ def post_detail(username, post_id):
 
                 }
                 # pusher_client.trigger('Blog', 'new_comment', {'data': print(data)})
-                return redirect(url_for("post.post_detail", post_id=post.id))
+                return redirect(url_for("post.post_detail", post_id=post.id, username=username))
         else:
             flash(f'{constants.THE_LINK_IS_NOT_FOLLOWING_BY_YOU}', 'info')
             return redirect(url_for('main.home'))
@@ -115,10 +115,10 @@ def post_detail(username, post_id):
 @post.route("/comment/<int:com_id>", methods=["GET", "POST"])
 @login_required
 def delete_comment(com_id):
-    # post = Post.query.get_or_404(com_id)
+    post = Post.query.get_or_404(com_id)
     comm = Comment.query.get_or_404(com_id)
 
-    if comm.user_id != current_user:
+    if comm.user_id != current_user and comm.user_id != post.author.username:
         abort(404)
     db.session.delete(comm)
     db.session.commit()
